@@ -1,0 +1,277 @@
+
+* {
+    font-family: 'Inter';
+}
+
+
+header {
+    background-color: #FFFFFF;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    padding: 10px 55px 12px 56px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+body {
+    background-color: #F5F5F5 !important;
+}
+
+.header-button {
+    display: flex;
+    flex-direction: row-re verse;
+}
+
+.header-button a {
+    width: 160px;
+    height: 68px;
+    border-radius: 15px;
+    margin-left: 15px;
+    background-color: #F7F0E9;
+    color: #A97B47;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 34px;
+
+}
+
+.search {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    background-color: #F7F0E9;
+    border-radius: 15px;
+    width: min-content;
+}
+
+.search img {
+    margin: 18px;
+    width: 32px;
+    height: 32px;
+}
+
+.search input {
+    font-size: 24px;
+    font-weight: 400;
+    background-color: #F7F0E9;
+    margin-left: 27px;
+    padding-right: 213px;
+}
+
+.search select {
+    font-size: 24px;
+    font-weight: 400;
+    padding: 25px;
+    color: #593C1C;
+    background-color: #D8C1A8;
+    border-radius: 15px;
+}
+
+.search select .icon {
+    font-size: 30px;
+}
+
+.logo img {
+    width: 265px;
+    height: 95px;
+}
+
+main {
+    position: relative;
+    top: 117px;
+    margin-right: 150px;
+    margin-left: 150px;
+    padding-bottom: 105px;
+}
+
+.setting {
+    background-color: #F7F0E9;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    border-radius: 15px;
+    padding: 20px 63px 20px 51px;
+}
+
+.sort {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 34px;
+}
+
+.sort p{
+    color: #593C1C;
+    margin-right: 30px;
+}
+
+.name-button {
+    margin-right: 29px;
+    color: #909090;
+    border: none;
+    background-color: #F7F0E9;
+    padding: 13px 41px 13px 40px;
+}
+
+.price-button {
+    border: none;
+    background-color: #A97B47;
+    color: #FFFFFF;
+    border-radius: 15px;
+    padding: 13px 41px 13px 40px;
+}
+
+.availableCommodities p{
+    color: #593C1C;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 39px;
+    margin-right: 31px;
+}
+
+.items {
+    margin-top: 57px;
+
+}
+
+.item {
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    border-radius: 15px;
+    padding: 0 10px 14px;
+}
+
+.item:hover {
+    background-color:#F7F0E9;
+}
+
+.item-title {
+    columns: #593C1C;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    padding-left: 19px;
+}
+
+.item-count {
+    color: #C82525;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px; 
+    padding-left: 19px;
+}
+
+.item-details {
+    color: #593C1C;
+    padding-left: 28px;
+    padding-right: 15px;
+}
+
+.item-details p {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.item-details button {
+    border: 1px solid #593C1C;
+    border-radius: 15px;
+    padding: 14px 22px 12px 23px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    background-color: #FFFFFF;
+    color: #593C1C;
+}
+
+footer p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color:#593C1C;
+    padding-top: 15px;
+    padding-bottom: 16px;
+    color: #FFFFFF;
+}
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+
+    header {
+        display: flex;
+        flex-direction: column-reverse;
+        padding-top: 20px;
+    }
+
+    .search input {
+        font-size: 24px;
+        font-weight: 400;
+        background-color: #F7F0E9;
+        margin-left: 27px;
+        padding-right: 120px;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .header-button {
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    main {
+        position: relative;
+        top: 117px;
+        margin-right: 110px;
+        margin-left: 110px;
+        padding-bottom: 105px;
+    }
+    
+}
+
+@media (min-width: 992px) and (max-width: 1400px) {
+
+    header {
+        display: flex;
+        flex-direction: column-reverse;
+        padding-top: 20px;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .search input {
+        font-size: 24px;
+        font-weight: 400;
+        background-color: #F7F0E9;
+        margin-left: 27px;
+        padding-right: 400px;
+    }
+
+    .header-button {
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    main {
+        position: relative;
+        top: 117px;
+        margin-right: 110px;
+        margin-left: 110px;
+        padding-bottom: 105px;
+    }
+}
