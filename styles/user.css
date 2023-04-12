@@ -25,7 +25,6 @@ body {
 .header-button {
     color: #593C1C;
     display: flex;
-    flex-direction: row-re verse;
 }
 
 .header-button a {
@@ -58,7 +57,7 @@ main {
     position: relative;
     top: 117px;
     padding-right: 170px;
-    padding-left: 110px;
+    padding-left: 130px;
     padding-bottom: 105px;
 }
 
@@ -118,7 +117,7 @@ main {
     font-weight: 600;
     font-size: 40px;
     line-height: 48px;
-    margin-bottom: 35px;
+    margin-bottom: 5px;
     color: #593C1C;
 }
 
@@ -149,6 +148,63 @@ main {
     border-radius: 15px;
 }
 
+
+
+table {
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 0 36px;
+    border-collapse: separate !important;
+}
+  
+
+tr {
+    border-radius: 15px;
+}
+
+table th,
+table td {
+    padding: 14px 30px 14px 30px;
+    text-align: center;
+    height: 150px;
+}
+
+td img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+thead {
+    padding-top: 20px;
+    padding-bottom: 21px;
+}
+
+th:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+th:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+td:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+td:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+table th {
+    font-size: .85em;
+}
+
+
 .item-details .rating {
     color: #FFC700;
 }
@@ -167,6 +223,24 @@ main {
     border-radius: 15px;
     margin-top: 16px;
     margin-bottom: 145px;
+}
+
+.in-cart {
+    color: #000000;
+    border: 1px solid #593C1C;
+    border-radius: 15px;
+    padding: 18px 25px 18px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.in-cart p{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    padding-right: 30px;
+    padding-left: 30px;
 }
 
 footer p {
@@ -192,8 +266,8 @@ footer {
     main {
         position: relative;
         top: 117px;
-        padding-right: 100px;
-        padding-left: 50px;
+        padding-right: 80px;
+        padding-left: 70px;
         padding-bottom: 105px;
     }
     
@@ -209,9 +283,102 @@ footer {
     main {
         position: relative;
         top: 117px;
-        padding-right: 110px;
+        padding-right: 90px;
         padding-left: 70px;
         padding-bottom: 105px;
     }
 
+    .in-cart {
+        flex-direction: column-reverse;
+    }
+    
+    .in-cart p {
+        padding: 20px 0px 20px 0px;
+    }
+
+    .item-details {
+        font-size: 20px;
+    }
+
 }
+
+@media (min-width: 1400px) and (max-width: 1900px) {
+
+    main {
+        padding-right: 90px;
+        padding-left: 70px;
+    }
+
+    .item-details {
+        font-size: 25px;
+    }
+
+    .in-cart-td {
+        padding-left: 0px;
+    }
+
+    .in-cart p {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+    table {
+        border: 0;
+    }
+
+    table caption {
+        font-size: 1.3em;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        font-size: .8em;
+        text-align: right;
+        justify-content: space-between;
+        align-items: center;
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #000000;
+    }
+
+    table td img {
+        width: 180px;
+        height: auto;
+    }
+
+    table td:last-child {
+        border-bottom: 0;
+    }
+}
+
+
+

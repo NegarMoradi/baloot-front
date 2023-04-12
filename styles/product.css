@@ -25,7 +25,6 @@ body {
 .header-button {
     color: #593C1C;
     display: flex;
-    flex-direction: row-re verse;
 }
 
 .header-button a {
@@ -109,6 +108,7 @@ main {
 
 .brand {
     color: #315FD8;
+    text-decoration: underline;
 }
 
 .add-to-cart {
@@ -210,6 +210,7 @@ main {
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
+    margin-left: 19px;
 }
 
 .comment-row {
@@ -250,7 +251,7 @@ main {
 }
 
 .item-title {
-    columns: #593C1C;
+    color: #593C1C;
     font-weight: 600;
     font-size: 28px;
     line-height: 34px;
@@ -337,5 +338,21 @@ footer {
     .submit-button {
         margin: 0;
         margin-top: 10px;
+    }
+}
+
+@media (min-width: 1400px) and (max-width: 1700px) {
+
+    .item-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .item-details button {
+        margin-top: 15px;
+    }
+
+    .item-details p {
+        margin-top: 15px;
     }
 }
