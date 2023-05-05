@@ -1,0 +1,13 @@
+header {
+    background-color: #FFFFFF;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    padding: 10px 55px 12px 56px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}

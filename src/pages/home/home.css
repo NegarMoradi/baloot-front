@@ -1,0 +1,39 @@
+
+.home {
+    position: relative;
+    top: 117px;
+    margin-right: 150px;
+    margin-left: 150px;
+    padding-bottom: 105px;
+}
+
+.items {
+    margin-top: 57px;
+
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+
+    .home {
+        position: relative;
+        top: 117px;
+        margin-right: 110px;
+        margin-left: 110px;
+        padding-bottom: 105px;
+    }
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1400px) {
+
+    .home {
+        position: relative;
+        top: 117px;
+        margin-right: 110px;
+        margin-left: 110px;
+        padding-bottom: 105px;
+    }
+
+}
+
