@@ -6,8 +6,8 @@ const HomeHeader = () => {
     return(
         <header class="d-xxl-flex">
             <div class="header-button">
-                <a href="./signInSigUp.html" class="btn">Login</a>
-                <a href="./signInSigUp.html" class="btn">Register</a>
+                <a href="./login" class="btn">Login</a>
+                <a href="./login" class="btn">Register</a>
             </div>
             <div class="search m-auto">
                 <img src={search} alt="search icon"/>
@@ -17,7 +17,7 @@ const HomeHeader = () => {
                     <option value="category">price</option>
                 </select>
             </div>
-            <a href="./home.html" class="logo">
+            <a href="./" class="logo">
                 <img src={logo} alt="Baloot logo"/>
             </a>
         </header>

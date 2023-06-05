@@ -1,6 +1,5 @@
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-// import getCommoditiesList from './commodities';
 import UserReducer from './user';
 import { combineReducers } from '@reduxjs/toolkit';
 import TokenReducer from './user/token';

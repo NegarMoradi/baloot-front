@@ -2,7 +2,7 @@
 import HomeHeader from './components/Header';
 import HomeSetting from './components/Setting';
 import './home.css';
-import Product from './components/Product';
+import Product from '../../components/Product';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { userSelectors } from '../../store/user/selector';
@@ -20,8 +20,8 @@ const Home = () => {
 
     const getCommoditiesApiCall = () => {
         const query = {
-            "email": "john@mail.com",
-            "password": "changeme"
+            "username": user.username,
+            "password": user.password
         }
 
         apiCall({ url: "http://localhost:5432/api/commodities", query, method: 'get', sucessCallback: onSuccess })
@@ -29,7 +29,7 @@ const Home = () => {
 
     useEffect(() => {
         getCommoditiesApiCall();
-    }, [])
+    })
 
     useEffect(() => {
         console.log(user);

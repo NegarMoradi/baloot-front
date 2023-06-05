@@ -16,62 +16,62 @@ const Login = () => {
 
     const loginApiCall = () => {
         const query = {
-            "email": "john@mail.com",
-            "password": "changeme"
+            "username": document.getElementById('user-signIn').value,
+            "password": document.getElementById('pass-signIn').value
         }
 
-        apiCall({ url: "https://api.escuelajs.co/api/v1/auth/login", query, method: 'post', sucessCallback: onSuccess })
+        apiCall({ url: "http://localhost:5432/api/users/login", query, method: 'post', sucessCallback: onSuccess })
     }
 
     return (
         <>
             <SignInSignUpHeader/>
             <div className='main'>
-                <div class="login-wrap">
-                    <div class="login-html">
-                        <input id="tab-1" type="radio" name="tab" class="sign-in" checked/><label for="tab-1" class="tab">Sign In</label>
-                        <input id="tab-2" type="radio" name="tab" class="sign-up"/><label for="tab-2" class="tab">Sign Up</label>
-                        <div class="login-form">
-                            <div class="sign-in-htm">
-                                <div class="group">
-                                    <label for="user-signIn" class="label">Username</label>
-                                    <input id="user-signIn" type="text" class="input"/>
+                <div className="login-wrap">
+                    <div className="login-html">
+                        <input id="tab-1" type="radio" name="tab" className="sign-in" defaultChecked/><label htmlFor="tab-1" className="tab">Sign In</label>
+                        <input id="tab-2" type="radio" name="tab" className="sign-up"/><label htmlFor="tab-2" className="tab">Sign Up</label>
+                        <div className="login-form">
+                            <div className="sign-in-htm">
+                                <div className="group">
+                                    <label htmlFor="user-signIn" className="label">Username</label>
+                                    <input id="user-signIn" type="text" className="input"/>
                                 </div>
-                                <div class="group">
-                                    <label for="pass-signIn" class="label">Password</label>
-                                    <input id="pass-signIn" type="password" class="input" data-type="password"/>
+                                <div className="group">
+                                    <label htmlFor="pass-signIn" className="label">Password</label>
+                                    <input id="pass-signIn" type="password" className="input" data-type="password"/>
                                 </div>
-                                <div class="group">
-                                    <input id="check" type="checkbox" class="check" checked/>
-                                    <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                                <div className="group">
+                                    <input id="check" type="checkbox" className="check" defaultChecked/>
+                                    <label htmlFor="check"><span className="icon"></span> Keep me Signed in</label>
                                 </div>
-                                <div class="group">
-                                    <input type="submit" class="button" value="Sign In" onClick={loginApiCall}/>
+                                <div className="group">
+                                    <input type="submit" className="button" value="Sign In" onClick={loginApiCall}/>
                                 </div>
                             </div>
-                            <div class="sign-up-htm">
-                                <div class="group">
-                                    <label for="user-signUp" class="label">Username</label>
-                                    <input id="user-signUp" type="text" class="input"/>
+                            <div className="sign-up-htm">
+                                <div className="group">
+                                    <label htmlFor="user-signUp" className="label">Username</label>
+                                    <input id="user-signUp" type="text" className="input"/>
                                 </div>
-                                <div class="group">
-                                    <label for="pass-signUp" class="label">Password</label>
-                                    <input id="pass-signUp" type="password" class="input" data-type="password"/>
+                                <div className="group">
+                                    <label htmlFor="pass-signUp" className="label">Password</label>
+                                    <input id="pass-signUp" type="password" className="input" data-type="password"/>
                                 </div>
-                                <div class="group">
-                                    <label for="pass-signUp-repeat" class="label">Repeat Password</label>
-                                    <input id="pass-signUp-repeat" type="password" class="input" data-type="password"/>
+                                <div className="group">
+                                    <label htmlFor="pass-signUp-repeat" className="label">Repeat Password</label>
+                                    <input id="pass-signUp-repeat" type="password" className="input" data-type="password"/>
                                 </div>
-                                <div class="group">
-                                    <label for="email" class="label">Email Address</label>
-                                    <input id="email" type="text" class="input"/>
+                                <div className="group">
+                                    <label htmlFor="email" className="label">Email Address</label>
+                                    <input id="email" type="text" className="input"/>
                                 </div>
-                                <div class="group">
-                                    <input type="submit" class="button" value="Sign Up"/>
+                                <div className="group">
+                                    <input type="submit" className="button" value="Sign Up"/>
                                 </div>
-                                <div class="hr"></div>
-                                <div class="foot-lnk">
-                                    <label for="tab-1">Already Member? </label>
+                                <div className="hr"></div>
+                                <div className="foot-lnk">
+                                    <label htmlFor="tab-1">Already Member? </label>
                                 </div>
                             </div>
                         </div>

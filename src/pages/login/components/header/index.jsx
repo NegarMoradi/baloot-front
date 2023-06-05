@@ -4,7 +4,7 @@ import './header.css';
 const SignInSignUpHeader = () => {
     return(
         <header class="logo">
-            <a href="./home.html">
+            <a href="./">
                 <img src={logo} alt="Baloot logo"/>
             </a>
         </header>
