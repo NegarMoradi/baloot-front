@@ -4,7 +4,7 @@ import './styles.css';
 const Footer = () => {
     return (
         <footer>
-            <p class="text-center">2023 @UT</p>
+            <p className="text-center">2023 @UT</p>
         </footer>
     )
 }

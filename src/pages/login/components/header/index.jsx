@@ -3,7 +3,7 @@ import './header.css';
 
 const SignInSignUpHeader = () => {
     return(
-        <header class="logo">
+        <header className="logo">
             <a href="./">
                 <img src={logo} alt="Baloot logo"/>
             </a>

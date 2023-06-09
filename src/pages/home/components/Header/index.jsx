@@ -1,23 +1,54 @@
 import './header.css';
 import logo from '../../../../assets/png/Baloot.png';
 import search from '../../../../assets/icons/searchIcon.svg';
+import { useState } from 'react';
+import UseApi from '../../../../hooks/api';
 
-const HomeHeader = () => {
+const HomeHeader = ({onSearch}) => {
+
+    const [inputState, setInputState] = useState("");
+    const [selectState, setSelectState] = useState("search_by_name");
+    const { apiCall } = UseApi();
+
+    const onSuccess = (res) => {
+        onSearch(res.data.data);
+    }
+
+    const getCommoditiesApiCall = (query) => {
+
+        apiCall({ url: "http://localhost:5432/api/commodities", query, method: 'get', sucessCallback: onSuccess })
+    }
+    const onSubmit = (e) => {
+        if(e.code === "Enter")  {
+            const query = {
+                action: selectState,
+                query: inputState
+            };
+            getCommoditiesApiCall(query)
+        }
+    }
     return(
-        <header class="d-xxl-flex">
-            <div class="header-button">
-                <a href="./login" class="btn">Login</a>
-                <a href="./login" class="btn">Register</a>
+        <header className="d-xxl-flex">
+            <div className="header-button">
+                <a href="./login" className="btn">Login</a>
+                <a href="./login" className="btn">Register</a>
             </div>
-            <div class="search m-auto">
+            <div className="search m-auto">
                 <img src={search} alt="search icon"/>
-                <input class="border-0" type="text" placeholder="search your product ..."/>
-                <select class="border-0" name="search" id="search">
-                    <option value="name">name</option>
-                    <option value="category">price</option>
+                <input 
+                    className="border-0" 
+                    type="text" 
+                    placeholder="search your product ..." 
+                    value={inputState} 
+                    onChange={(e) => {setInputState(e.target.value)}}
+                    onKeyUp={onSubmit}
+                />
+                <select className="border-0" name="search" id="search" value={selectState} onChange={(e) => {setSelectState(e.target.value)}}>
+                    <option value="search_by_name" selected>name</option>
+                    <option value="search_by_category">category</option>
                 </select>
             </div>
-            <a href="./" class="logo">
+            <a href="./" className="logo">
                 <img src={logo} alt="Baloot logo"/>
             </a>
         </header>

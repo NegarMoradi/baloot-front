@@ -19,6 +19,7 @@ const Login = () => {
             "username": document.getElementById('user-signIn').value,
             "password": document.getElementById('pass-signIn').value
         }
+        console.log(query)
 
         apiCall({ url: "http://localhost:5432/api/users/login", query, method: 'post', sucessCallback: onSuccess })
     }

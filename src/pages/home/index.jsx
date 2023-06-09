@@ -29,7 +29,7 @@ const Home = () => {
 
     useEffect(() => {
         getCommoditiesApiCall();
-    })
+    },[])
 
     useEffect(() => {
         console.log(user);
@@ -41,9 +41,9 @@ const Home = () => {
     return (
 
         <>
-            <HomeHeader/>
-            <div class="px-5 pt-5 home">
-                <HomeSetting/>
+            <HomeHeader onSearch={setCommodities}/>
+            <div className="px-5 pt-5 home">
+                <HomeSetting onSort={setCommodities}/>
                 <div className='items'>
                     <div className='row'>
                         {commodities?.map((product, index) => {
