@@ -3,8 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const InitialState = {
-    name: '',
-    id: null
+    address: "",
+    birthday: "",
+    buyList: [],
+    credit: 0,
+    currentBuyListPrice: 0,
+    email: '',
+    password: "",
+    purchasedList: {},
+    serializedBuyList: {},
+    username: ""
 };
 
 export const userSlice = createSlice({
@@ -13,9 +21,9 @@ export const userSlice = createSlice({
 
     reducers: {
         setUserInfo: (state, action) => {
-            state.name = action?.payload?.name;
-            state.id = action?.payload?.id;
-            state.access_token = action?.payload?.access_token;
+            state = action.payload;
+            state.serializedBuyList = JSON.parse(action.payload.serializedBuyList);
+            return state;
         },
         clear: (state) => {
             state = InitialState;

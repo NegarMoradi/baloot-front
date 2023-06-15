@@ -1,20 +1,38 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './login.css';
 import UseApi from '../../hooks/api';
-import { setToken } from '../../store/user/token';
 import { useNavigate } from 'react-router-dom';
 import { setUserInfo } from '../../store/user';
+import { userSelectors } from '../../store/user/selector';
 
 const Login = () => {
     const { apiCall } = UseApi();
     const dispatch = useDispatch()
     const navigate = useNavigate();
-    const onSuccess = (res) => {
+
+    const user = useSelector(userSelectors.user)
+
+    useEffect(() => {
+        console.log("useEffect");
+        console.log(user);
+        if(user.username) {
+            navigate('/')
+        }
+    }, [user])
+
+    const onGetUserDataSuccess = (res) => {
         console.log(res);
-        dispatch(setToken(res.data))
-        dispatch(setUserInfo({name: document.getElementById('user-signIn').value}))
-        navigate('/')
+        dispatch(setUserInfo(res.data.data))
+    }
+
+    const getUserData = () => {
+        const query = {};
+        apiCall({ url: "http://localhost:5432/api/users/loggedInUser", query, method: 'get', sucessCallback: onGetUserDataSuccess })
+    }
+
+    const onLoginSuccess = (res) => {
+        getUserData();
     }
 
     const loginApiCall = () => {
@@ -23,7 +41,7 @@ const Login = () => {
             "password": document.getElementById('pass-signIn').value
         }
 
-        apiCall({ url: "http://localhost:5432/api/users/login", query, method: 'post', sucessCallback: onSuccess })
+        apiCall({ url: "http://localhost:5432/api/users/login", query, method: 'post', sucessCallback: onLoginSuccess })
     }
 
     return (

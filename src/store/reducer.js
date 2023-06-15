@@ -13,7 +13,7 @@ const PersistConfig = (reducerName) => ({
 
 export const RootReducer = combineReducers({
     token: persistReducer(PersistConfig('token'), TokenReducer),
-    user: UserReducer,
+    user: persistReducer(PersistConfig('user'), UserReducer),
     cart: CartReducer,
     cartModal: CartModalReducer
 });
