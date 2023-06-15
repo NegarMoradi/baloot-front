@@ -15,12 +15,10 @@ const Commodity = () => {
     const { apiCall } = UseApi();
     const onSuccessCommodities = (res) => {
         setCommodity(res.data.data);
-        console.log(res.data.data)
     }
 
     const onSuccessSuggestedCommodities = (res) => {
         setSuggestedCommodities(res.data.data);
-        console.log(res.data.data)
     }
 
     const getCommodityApiCall = () => {

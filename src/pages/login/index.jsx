@@ -14,15 +14,12 @@ const Login = () => {
     const user = useSelector(userSelectors.user)
 
     useEffect(() => {
-        console.log("useEffect");
-        console.log(user);
         if(user.username) {
             navigate('/')
         }
     }, [user])
 
     const onGetUserDataSuccess = (res) => {
-        console.log(res);
         dispatch(setUserInfo(res.data.data))
     }
 

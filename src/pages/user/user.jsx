@@ -16,7 +16,6 @@ const User = () => {
 
 
     const onSuccess = (res) => {
-        console.log(res);
         setUserData(res.data.data)
     }
 
@@ -24,10 +23,6 @@ const User = () => {
         apiCall({ url: "http://localhost:5432/api/users/buyList", query: {}, method: 'post', sucessCallback: onSuccess })
 
     })
-
-    useEffect(() => {
-        console.log(userData);
-    },[userData])
     return (
         <div className="mt-5 main">
             <div calssName="user d-xxl-flex justify-content-between">

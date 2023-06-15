@@ -10,12 +10,10 @@ export const cartModalSlice = createSlice({
 
     reducers: {
         showCartModal: (state, action) => {
-            console.log("here");
             state = true;
             return state;
         },
         hideCartModal: (state, action) => {
-            console.log("on here")
             state = false;
             return state;
         },

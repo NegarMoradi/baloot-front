@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Routing from '../../routing';
 import Footer from './footer';
 import Header from './header';
@@ -9,11 +9,6 @@ import { useSelector } from 'react-redux';
 const Layout = ({children}) => {
 
     const cartModalStatus = useSelector(cartModalSelectors.cartModal)
-
-useEffect(() => {
-    console.log('cartModalStatus');
-    console.log(cartModalStatus);
-},[cartModalStatus])
     return (
         <div>
             <Header />

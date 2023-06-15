@@ -12,7 +12,6 @@ const HomeSetting = ({onSort}) => {
     }
 
     const getCommoditiesApiCall = (query) => {
-        console.log(query);
         apiCall({ url: "http://localhost:5432/api/commodities", query, method: 'get', sucessCallback: onSuccess })
     }
 

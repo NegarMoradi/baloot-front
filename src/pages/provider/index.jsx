@@ -13,7 +13,6 @@ const Provider = () => {
     const { apiCall } = UseApi();
     const onSuccessProviders = (res) => {
         setProvider(res.data.data);
-        console.log(res.data.data)
     }
     const getProviderApiCall = () => {
         const query = {

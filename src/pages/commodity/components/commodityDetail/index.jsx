@@ -22,9 +22,6 @@ const CommodityDetail = ({commodity}) => {
         dispatch(decreaseCart(commodity.id))
     }
 
-    useEffect(() => {
-        console.log(cart, 'cart');
-    }, [cart])
     return (
         <div className="row g-0">
             <div className="col-lg-6">
