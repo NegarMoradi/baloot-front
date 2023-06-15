@@ -8,9 +8,17 @@ const UseApi = () => {
 
     const apiCall = ({ url, query, method, sucessCallback, failedCallback }) => {
         setLoading(true);
-        const newMethod = method ?? "get";
         const params = query ?? {};
-        axios[newMethod](url, params)
+        const axiosOptions = {
+            url,
+            method: method ?? "get"
+        }
+        if(method ==="post") {
+            axiosOptions.data = params
+        } else {
+            axiosOptions.params = params
+        }
+        axios(axiosOptions)
             .then(function (response) {
                 // handle success
                 sucessCallback?.(response);
