@@ -7,7 +7,6 @@ const CartModal = () => {
     const dispatch = useDispatch();
 
     const closeModal = () => {
-        console.log("close");
         dispatch(hideCartModal())
     }
 
