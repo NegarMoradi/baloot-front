@@ -29,9 +29,9 @@ const HomeHeader = ({onSearch}) => {
     }
     return(
         <header className="d-xxl-flex">
-            <div className="header-button">
-                <a href="./login" className="btn">Login</a>
+            <div className="header-button-home">
                 <a href="./login" className="btn">Register</a>
+                <a href="./login" className="btn">Login</a>
             </div>
             <div className="search m-auto">
                 <img src={search} alt="search icon"/>

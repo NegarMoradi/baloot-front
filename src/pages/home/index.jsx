@@ -17,7 +17,6 @@ const Home = () => {
     const onSuccess = (res) => {
         setCommodities(res.data.data);
     }
-
     const getCommoditiesApiCall = () => {
         const query = {
             "username": user.username,
@@ -29,7 +28,7 @@ const Home = () => {
 
     useEffect(() => {
         getCommoditiesApiCall();
-    },[])
+    }, [])
 
     useEffect(() => {
         console.log(user);

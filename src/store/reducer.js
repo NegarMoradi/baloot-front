@@ -2,6 +2,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import UserReducer from './user';
 import CartReducer from './cart';
+import CartModalReducer from './cartModal';
 import { combineReducers } from '@reduxjs/toolkit';
 import TokenReducer from './user/token';
 
@@ -13,5 +14,6 @@ const PersistConfig = (reducerName) => ({
 export const RootReducer = combineReducers({
     token: persistReducer(PersistConfig('token'), TokenReducer),
     user: UserReducer,
-    cart: CartReducer
+    cart: CartReducer,
+    cartModal: CartModalReducer
 });

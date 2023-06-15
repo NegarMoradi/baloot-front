@@ -1,0 +1,27 @@
+
+.add-to-cart-button  {
+    color: #593C1C;
+    background-color: #FFFFFF;
+    border: 1px solid #593C1C;
+    border-radius: 15px;
+    padding: 24px 27px 24px 27px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    width: 14rem;
+    height: 6rem;
+}
+
+.add-to-cart-button-little  {
+    color: #593C1C;
+    background-color: #FFFFFF;
+    border: 1px solid #593C1C;
+    border-radius: 15px;
+    padding: 24px 27px 24px 27px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    width: 12rem;
+    height: 5rem;
+}
+

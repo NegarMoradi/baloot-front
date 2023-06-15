@@ -14,11 +14,11 @@ header {
 }
 
 
-.header-button {
+.header-button-home {
     display: flex;
 }
 
-.header-button a {
+.header-button-home a {
     width: 160px;
     height: 68px;
     border-radius: 15px;

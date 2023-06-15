@@ -29,3 +29,7 @@ header {
     top: 0;
     left: 0;
 }
+
+.cart-header {
+    margin-right: 51px;
+}

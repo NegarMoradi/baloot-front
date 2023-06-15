@@ -1,17 +1,20 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import SignInSignUpHeader from './components/header';
 import './login.css';
 import UseApi from '../../hooks/api';
 import { setToken } from '../../store/user/token';
+import { useNavigate } from 'react-router-dom';
+import { setUserInfo } from '../../store/user';
 
 const Login = () => {
     const { apiCall } = UseApi();
     const dispatch = useDispatch()
-
+    const navigate = useNavigate();
     const onSuccess = (res) => {
         console.log(res);
         dispatch(setToken(res.data))
+        dispatch(setUserInfo({name: document.getElementById('user-signIn').value}))
+        navigate('/')
     }
 
     const loginApiCall = () => {
@@ -19,14 +22,12 @@ const Login = () => {
             "username": document.getElementById('user-signIn').value,
             "password": document.getElementById('pass-signIn').value
         }
-        console.log(query)
 
         apiCall({ url: "http://localhost:5432/api/users/login", query, method: 'post', sucessCallback: onSuccess })
     }
 
     return (
         <>
-            <SignInSignUpHeader/>
             <div className='main'>
                 <div className="login-wrap">
                     <div className="login-html">
