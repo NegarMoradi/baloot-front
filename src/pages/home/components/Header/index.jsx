@@ -3,13 +3,15 @@ import logo from '../../../../assets/png/Baloot.png';
 import search from '../../../../assets/icons/searchIcon.svg';
 import { useState } from 'react';
 import UseApi from '../../../../hooks/api';
+import { useSelector } from 'react-redux';
+import { userSelectors } from '../../../../store/user/selector';
+import HeaderCart from '../../../../components/headerCart';
 
 const HomeHeader = ({onSearch}) => {
-
+    const user = useSelector(userSelectors.user)
     const [inputState, setInputState] = useState("");
     const [selectState, setSelectState] = useState("search_by_name");
     const { apiCall } = UseApi();
-
     const onSuccess = (res) => {
         onSearch(res.data.data);
     }
@@ -27,12 +29,23 @@ const HomeHeader = ({onSearch}) => {
             getCommoditiesApiCall(query)
         }
     }
+
+    const loginRegisterComponent = () => {
+        return (
+            <div className="header-button-home">
+                    <a href="./login" className="btn">Register</a>
+                    <a href="./login" className="btn">Login</a>
+            </div>
+        )
+    }
     return(
         <header className="d-xxl-flex">
-            <div className="header-button-home">
-                <a href="./login" className="btn">Register</a>
-                <a href="./login" className="btn">Login</a>
-            </div>
+            {
+                user.username && <HeaderCart />
+            }
+            {
+                !user.username && loginRegisterComponent()
+            }
             <div className="search m-auto">
                 <img src={search} alt="search icon"/>
                 <input 
