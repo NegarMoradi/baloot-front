@@ -28,15 +28,7 @@ const Home = () => {
     getCommoditiesApiCall();
   }, []);
 
-  useEffect(() => {
-    console.log("showedItems");
-    console.log(showedItems);
-  }, [showedItems]);
 
-  useEffect(() => {
-    console.log("commodities");
-    console.log(commodities);
-  }, [commodities]);
   return (
     <>
       <HomeHeader onSearch={setCommodities} />
