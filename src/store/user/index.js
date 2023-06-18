@@ -25,14 +25,14 @@ export const userSlice = createSlice({
             state.serializedBuyList = JSON.parse(action.payload.serializedBuyList);
             return state;
         },
-        clear: (state) => {
+        userClear: (state) => {
             state = InitialState;
             return state;
         },
     },
 });
 
-export const { setUserInfo, clear } =
+export const { setUserInfo, userClear } =
     userSlice.actions;
     
 export default userSlice.reducer;

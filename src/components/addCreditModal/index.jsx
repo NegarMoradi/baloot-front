@@ -1,4 +1,17 @@
+import UseApi from "../../hooks/api";
+
 const AddCreditModal = ({ credit, setClose }) => {
+  const { apiCall } = UseApi();
+
+  const onConfirm = () => {
+    apiCall({
+      url: `http://localhost:5432/api/users/credit`,
+      query: { credit: credit },
+      method: "post",
+      sucessCallback: setClose,
+    });
+  };
+
   return (
     <div
       className="modal d-block"
@@ -27,7 +40,7 @@ const AddCreditModal = ({ credit, setClose }) => {
             >
               Close
             </button>
-            <button type="button" className="modal-button">
+            <button type="button" className="modal-button" onClick={onConfirm}>
               Confirm!
             </button>
           </div>

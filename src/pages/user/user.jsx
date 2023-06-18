@@ -10,9 +10,10 @@ import UseApi from "../../hooks/api";
 import { useDispatch, useSelector } from "react-redux";
 import { userSelectors } from "../../store/user/selector";
 import "./user.css";
-import { clear } from "../../store/user";
+import { userClear } from "../../store/user";
 import AddCreditModal from "../../components/addCreditModal";
 import { showCartModal } from "../../store/cartModal";
+import { useNavigate } from "react-router-dom";
 
 const User = () => {
   const user = useSelector(userSelectors.user);
@@ -22,10 +23,11 @@ const User = () => {
   const [addCreditModalState, setAddCreditModalState] = useState(false);
   const [creditInput, setCreditInput] = useState("");
   const [purchasedList, setPurchasedList] = useState([]);
-
+  const navigate = useNavigate();
   const onSuccessLogout = () => {
-    dispatch(clear());
-    window.location.replace("http://localhost:3000/");
+    dispatch(userClear());
+    navigate("/");
+    // window.location.replace("http://localhost:3000/");
   };
 
   const showCartDialog = () => {

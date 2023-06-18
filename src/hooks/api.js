@@ -1,9 +1,13 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { userClear } from '../store/user';
 
 const UseApi = () => {
     const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     // const navigate = useNavigate()
 
     const apiCall = ({ url, query, method, sucessCallback, failedCallback }) => {
@@ -27,8 +31,9 @@ const UseApi = () => {
                 // handle error
                 if(error?.response?.status === 401) {
                     // Toast(error.response.data)
-                    // navigate("/login")
-                    window.location.replace('http://localhost:5432/api/login')
+                    navigate("/login")
+                    dispatch(userClear())
+                    // window.location.replace('http://localhost:5432/login')
                 }
                 failedCallback?.(error);
             })
