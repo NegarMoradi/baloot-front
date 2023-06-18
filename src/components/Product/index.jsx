@@ -3,27 +3,13 @@ import "./product.css";
 import commafy from "../commafy";
 import { useNavigate } from "react-router-dom";
 import AddToCart from "../addToCart";
-import { useSelector, useDispatch } from "react-redux";
-import { cartSelectors } from "../../store/cart/selector";
-import { addToCart, increaseCart, decreaseCart } from "../../store/cart";
-import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/cart";
 
 const Product = ({ product }) => {
   const navigate = useNavigate();
-  const cart = useSelector(cartSelectors.cart);
-  const dispatch = useDispatch();
 
-  const onAddToCart = () => {
-    dispatch(addToCart(product));
-  };
 
-  const onIncreaseCart = () => {
-    dispatch(increaseCart(product.id));
-  };
-
-  const onDecreaseCart = () => {
-    dispatch(decreaseCart(product.id));
-  };
   const productAddToCart = document.getElementById("product-add-to-cart");
   productAddToCart?.addEventListener("click", (event) => {
     event.preventDefault();
@@ -56,11 +42,7 @@ const Product = ({ product }) => {
           >
             <p className="mb-0">{commafy(product.price)}$</p>
             <AddToCart
-              onDecreaseCart={onDecreaseCart}
-              onIncreaseCart={onIncreaseCart}
-              count={cart[product.id]?.count}
-              id={cart[product.id]}
-              onAddToCart={onAddToCart}
+              product={product}
               type="product"
             />
           </div>

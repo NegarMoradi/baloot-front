@@ -8,14 +8,14 @@ import "./headerCart.css";
 const HeaderCart = () => {
   const user = useSelector(userSelectors.user);
   const cart = useSelector(cartSelectors.cart);
-  const getCartLentgh = () => {
-    return Object.values(cart)[0]?.count;
+  const getCartLength = () => {
+    return Object.values(cart).reduce((currentCount, item) => item.count + currentCount, 0);
   };
   const dispatch = useDispatch();
   const showCartDialog = () => {
     dispatch(showCartModal());
   };
-  const cartNumber = getCartLentgh();
+  const cartNumber = getCartLength();
 
   const buttonClass = cartNumber > 0 ? "header-button-user" : "header-button";
 

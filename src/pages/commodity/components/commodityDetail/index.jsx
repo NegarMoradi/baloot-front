@@ -1,26 +1,9 @@
 import star from "../../../../assets/icons/star.svg";
 import stars from "../../../../assets/png/stars.png";
-import { useSelector, useDispatch } from "react-redux";
-import { cartSelectors } from "../../../../store/cart/selector";
-import { addToCart, increaseCart, decreaseCart } from "../../../../store/cart";
 import AddToCart from "../../../../components/addToCart";
 import { useNavigate } from "react-router-dom";
 const CommodityDetail = ({ commodity, provider }) => {
   const navigate = useNavigate();
-  const cart = useSelector(cartSelectors.cart);
-  const dispatch = useDispatch();
-
-  const onAddToCart = () => {
-    dispatch(addToCart(commodity));
-  };
-
-  const onIncreaseCart = () => {
-    dispatch(increaseCart(commodity.id));
-  };
-
-  const onDecreaseCart = () => {
-    dispatch(decreaseCart(commodity.id));
-  };
 
   return (
     <div className="row g-0">
@@ -60,11 +43,7 @@ const CommodityDetail = ({ commodity, provider }) => {
         <div className="add-to-cart d-flex justify-content-between align-items-center">
           <p className="m-0">{commodity?.price}$</p>
           <AddToCart
-            onDecreaseCart={onDecreaseCart}
-            onIncreaseCart={onIncreaseCart}
-            count={cart[commodity.id]?.count}
-            id={cart[commodity.id]}
-            onAddToCart={onAddToCart}
+            product={commodity}
           />
         </div>
         <div className="rate row align-items-center">

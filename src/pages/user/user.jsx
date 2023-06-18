@@ -123,7 +123,6 @@ const User = () => {
                 className="my-1 w-100"
                 onClick={() => {
                   setAddCreditModalState(true);
-                  console.log("flkrf");
                 }}
               >
                 Add More Credit

@@ -47,7 +47,6 @@ const Commodity = () => {
 
   const getProviderApiCall = () => {
     const query = {};
-    console.log(commodity);
     apiCall({
       url: `http://localhost:5432/api/commodities/provider/${commodity?.providerId}`,
       query,
