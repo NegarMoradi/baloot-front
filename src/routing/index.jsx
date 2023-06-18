@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
@@ -12,7 +11,6 @@ import User from '../pages/user/user';
 
 const Routing = () => {
     return (
-        <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
@@ -20,7 +18,6 @@ const Routing = () => {
                 <Route path='/providers/:id' element={<Provider/>}/>
                 <Route path='/user' element={<User/>}/>
             </Routes>
-        </Router>
     )
 }
 
