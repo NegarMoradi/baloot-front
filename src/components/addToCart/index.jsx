@@ -22,21 +22,32 @@ const AddToCart = ({ product, type }) => {
       url: `http://localhost:5432/api/users/buyList`,
       query: { commodityId: product.id },
       method: "post",
-      sucessCallback: onAddToCart,
+      sucessCallback: () => {},
+    });
+  };
+
+  const postRemoveCart = () => {
+    apiCall({
+      url: `http://localhost:5432/api/users/buyList`,
+      query: { commodityId: product.id },
+      method: "delete",
+      sucessCallback: ({data}) => {console.log(data.data)},
     });
   };
 
 
-
-  const onAddToCart = (res) => {
+  const onAddToCart = () => {
+    postAddCart();
     dispatch(addToCart(product));
   };
 
   const onIncreaseCart = () => {
+    postAddCart();
     dispatch(increaseCart(product.id));
   };
 
   const onDecreaseCart = () => {
+    postRemoveCart();
     dispatch(decreaseCart(product.id));
   };
 
@@ -58,7 +69,7 @@ const AddToCart = ({ product, type }) => {
           </button>
         </div>
       ) : (
-        <button className={buttonSize} onClick={postAddCart}>
+        <button className={buttonSize} onClick={onAddToCart}>
           add to cart
         </button>
       )}

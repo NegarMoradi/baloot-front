@@ -13,7 +13,7 @@ const UseApi = () => {
             url,
             method: method ?? "get"
         }
-        if(method ==="post") {
+        if(method ==="post" || method === "delete") {
             axiosOptions.data = params
         } else {
             axiosOptions.params = params
