@@ -14,6 +14,7 @@ const Provider = () => {
     const onSuccessProviders = (res) => {
         setProvider(res.data.data);
     }
+
     const getProviderApiCall = () => {
         const query = {
             "username": user.username,
@@ -22,6 +23,8 @@ const Provider = () => {
 
         apiCall({ url: `http://localhost:5432/api/providers/${id}`, query, method: 'get', sucessCallback: onSuccessProviders })
     }
+
+
     useEffect(() => {
         getProviderApiCall();
       }, [id])

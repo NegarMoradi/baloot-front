@@ -1,0 +1,45 @@
+
+
+.header-button {
+    color: #593C1C;
+    display: flex;
+}
+
+.header-username {
+    text-decoration: none;
+    color: #593C1C;
+}
+
+.header-username:hover {
+    color: #593C1C;
+}
+
+.header-button button {
+    border-radius: 15px;
+    margin-left: 30px;
+    background-color: #F7F0E9;
+    color: #593C1C;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    border: none;
+
+}
+
+.header-button-user button {
+    border-radius: 15px;
+    margin-left: 30px;
+    color: #F7F0E9;
+    background-color: #593C1C;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    border: none;
+
+}
+
+.header-username {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+}

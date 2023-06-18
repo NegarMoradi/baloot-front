@@ -3,6 +3,21 @@
     font-family: 'Inter';
 }
 
+
+header {
+    background-color: #FFFFFF;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    padding: 10px 55px 12px 56px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
 .username {
     font-weight: 600;
     font-size: 28px;
@@ -13,12 +28,26 @@
     margin-right: 51px;
 }
 
+.header-button-color {
+    background-color: #593C1C !important;
+}
+
 .logo img {
     width: 265px;
     height: 95px;
 }
 
-main {
+.logout {
+    background: #593C1C;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    color: #FFFFFF;
+    padding: 17px 36px;
+}
+
+.main-user {
     position: relative;
     top: 117px;
     padding-right: 170px;
@@ -29,7 +58,7 @@ main {
 .user {
     color: #593C1C;
     background-color: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    box-shadow: 0px 4px 4px rgba(123, 83, 83, 0.25);
     border-radius: 15px;
     padding: 35px;
 }
@@ -74,7 +103,7 @@ main {
     border-radius: 15px;
 }
 
-.cart {
+.user-cart {
     margin-top: 80px;
 }
 
@@ -98,7 +127,7 @@ main {
     color: #000000;
 }
 
-.item-details {
+.user-item-details {
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
     border-radius: 15px;
@@ -109,7 +138,7 @@ main {
     color: #919191;
 }
 
-.item-details img {
+.user-item-details img {
     border-radius: 15px;
 }
 
@@ -170,15 +199,15 @@ table th {
 }
 
 
-.item-details .rating {
+.user-item-details .rating {
     color: #FFC700;
 }
 
-.item-details .in-stock {
+.user-item-details .in-stock {
     color: #C82525;
 }
 
-.cart button {
+.user-cart button {
     font-weight: 600;
     font-size: 24px;
     line-height: 29px;
@@ -228,7 +257,7 @@ footer {
 
 @media (min-width: 768px) and (max-width: 992px) {
 
-    main {
+    .main-user {
         position: relative;
         top: 117px;
         padding-right: 80px;
@@ -245,7 +274,7 @@ footer {
 
 @media (min-width: 992px) and (max-width: 1400px) {
 
-    main {
+    .main-user {
         position: relative;
         top: 117px;
         padding-right: 90px;
@@ -261,7 +290,7 @@ footer {
         padding: 20px 0px 20px 0px;
     }
 
-    .item-details {
+    .user-item-details {
         font-size: 20px;
     }
 
@@ -269,12 +298,12 @@ footer {
 
 @media (min-width: 1400px) and (max-width: 1900px) {
 
-    main {
+    .main-user {
         padding-right: 90px;
         padding-left: 70px;
     }
 
-    .item-details {
+    .user-item-details {
         font-size: 25px;
     }
 

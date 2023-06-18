@@ -57,8 +57,9 @@ const HomeHeader = ({onSearch}) => {
                     onKeyUp={onSubmit}
                 />
                 <select className="border-0" name="search" id="search" value={selectState} onChange={(e) => {setSelectState(e.target.value)}}>
-                    <option value="search_by_name" selected>name</option>
+                    <option value="search_by_name">name</option>
                     <option value="search_by_category">category</option>
+                    <option value="search-by-price">price</option>
                 </select>
             </div>
             <a href="./" className="logo">

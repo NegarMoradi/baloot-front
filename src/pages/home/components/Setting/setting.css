@@ -21,6 +21,16 @@
     color: #909090;
     border: none;
     background-color: #F7F0E9;
+    border-radius: 15px;
+    padding: 13px 41px 13px 40px;
+}
+
+.name-button-click {
+    margin-right: 29px;
+    color: #FFFFFF;
+    border: none;
+    background-color: #A97B47;
+    border-radius: 15px;
     padding: 13px 41px 13px 40px;
 }
 
@@ -31,6 +41,15 @@
     border-radius: 15px;
     padding: 13px 41px 13px 40px;
 }
+
+.price-button-click {
+    border: none;
+    background-color: #F7F0E9;
+    color: #909090;
+    border-radius: 15px;
+    padding: 13px 41px 13px 40px;
+}
+
 
 .availableCommodities p{
     color: #593C1C;
