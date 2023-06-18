@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./addToCart.css";
 import { addToCart, decreaseCart, increaseCart } from "../../store/cart";
 import { cartSelectors } from "../../store/cart/selector";
-import { useEffect } from "react";
+import UseApi from "../../hooks/api";
 
 const AddToCart = ({ product, type }) => {
   const buttonSize =
@@ -12,10 +12,23 @@ const AddToCart = ({ product, type }) => {
       ? "add-to-cart-button-small"
       : "add-to-cart-button";
   const cart = useSelector(cartSelectors.cart);
-
+  const { apiCall } = UseApi();
   const dispatch = useDispatch();
 
-  const onAddToCart = () => {
+
+
+  const postAddCart = () => {
+    apiCall({
+      url: `http://localhost:5432/api/users/buyList`,
+      query: { commodityId: product.id },
+      method: "post",
+      sucessCallback: onAddToCart,
+    });
+  };
+
+
+
+  const onAddToCart = (res) => {
     dispatch(addToCart(product));
   };
 
@@ -45,7 +58,7 @@ const AddToCart = ({ product, type }) => {
           </button>
         </div>
       ) : (
-        <button className={buttonSize} onClick={onAddToCart}>
+        <button className={buttonSize} onClick={postAddCart}>
           add to cart
         </button>
       )}
