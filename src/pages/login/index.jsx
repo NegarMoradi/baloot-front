@@ -20,6 +20,7 @@ const Login = () => {
     }, [user])
 
     const onGetUserDataSuccess = (res) => {
+        console.log(res.data.data);
         dispatch(setUserInfo(res.data.data))
     }
 

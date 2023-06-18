@@ -3,8 +3,6 @@ import "./product.css";
 import commafy from "../commafy";
 import { useNavigate } from "react-router-dom";
 import AddToCart from "../addToCart";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../store/cart";
 
 const Product = ({ product }) => {
   const navigate = useNavigate();

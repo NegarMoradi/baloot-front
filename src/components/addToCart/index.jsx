@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./addToCart.css";
-import { addToCart, decreaseCart, increaseCart } from "../../store/cart";
+import { addOneToCart, decreaseCart, increaseCart } from "../../store/cart";
 import { cartSelectors } from "../../store/cart/selector";
 import UseApi from "../../hooks/api";
 
@@ -38,7 +38,7 @@ const AddToCart = ({ product, type }) => {
 
   const onAddToCart = () => {
     postAddCart();
-    dispatch(addToCart(product));
+    dispatch(addOneToCart(product));
   };
 
   const onIncreaseCart = () => {
