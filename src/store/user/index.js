@@ -11,7 +11,7 @@ const InitialState = {
     email: '',
     password: "",
     purchasedList: {},
-    serializedBuyList: {},
+    buyList: {},
     username: ""
 };
 
@@ -22,7 +22,6 @@ export const userSlice = createSlice({
     reducers: {
         setUserInfo: (state, action) => {
             state = action.payload;
-            state.serializedBuyList = JSON.parse(action.payload.serializedBuyList);
             return state;
         },
         userClear: (state) => {

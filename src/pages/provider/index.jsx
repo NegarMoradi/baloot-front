@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { userSelectors } from '../../store/user/selector';
 import UseApi from '../../hooks/api';
 import './provider.css';
+import AuthenticationLayout from "../../components/authenticationLayout";
 
 const Provider = () => {
     const { id } = useParams();
@@ -29,6 +30,7 @@ const Provider = () => {
         getProviderApiCall();
       }, [id])
     return (
+        <AuthenticationLayout>
         <div className="mt-5 main-provider">
             <div className="mx-5">
                 <img src={provider.image} alt="provider"/>
@@ -53,6 +55,7 @@ const Provider = () => {
        </div>
             </div>
         </div>
+        </AuthenticationLayout>
     )
 }
 
