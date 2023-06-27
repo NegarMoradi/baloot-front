@@ -80,3 +80,8 @@
     line-height: 29px;
     color: #593C1C;
 }
+
+.discount-price {
+    color: #D8C1A8;
+    text-decoration: line-through;
+}

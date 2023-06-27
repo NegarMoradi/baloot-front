@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import "./cartModal.css";
 import UseApi from "../../hooks/api";
 import { userSelectors } from "../../store/user/selector";
+import { clear } from "../../store/cart";
 
 const CartModal = () => {
   const dispatch = useDispatch();
   const [buyList, setBuyList] = useState([]);
+  const [code, setCode] = useState("");
+  const [discount, setDiscount] = useState(0);
   const { apiCall } = UseApi();
   const [totalPrice, setTotalPrice] = useState(0);
   const user = useSelector(userSelectors.user);
@@ -16,21 +19,22 @@ const CartModal = () => {
     dispatch(hideCartModal());
   };
   const calculateTotalPrice = () => {
-   let total = 0;
-    buyList.forEach(item => {
+    let total = 0;
+    buyList.forEach((item) => {
       total += item.commodity.price;
-    })
+    });
     setTotalPrice(total);
-  }
+  };
   const onSuccessBuyList = (res) => {
     setBuyList(res.data.data);
   };
 
   useEffect(() => {
-    calculateTotalPrice()
-  }, [buyList])
+    calculateTotalPrice();
+  }, [buyList]);
 
-  const onSuccessPurchase = () => {
+  const onSuccessPayment = () => {
+    dispatch(clear());
     closeModal();
   };
 
@@ -45,14 +49,14 @@ const CartModal = () => {
     });
   };
 
-  const purchaseApiCall = () => {
+  const paymentApiCall = () => {
     const query = {};
 
     apiCall({
       url: "http://localhost:5432/api/users/payment",
       query,
       method: "post",
-      sucessCallback: onSuccessPurchase,
+      sucessCallback: onSuccessPayment,
     });
   };
 
@@ -60,6 +64,16 @@ const CartModal = () => {
     getBuyListApiCall();
   }, [user]);
 
+  const onDiscountClick = () => {
+    apiCall({
+      url: "http://localhost:5432/api/users/discount",
+      query: { code: code },
+      method: "post",
+      sucessCallback: () => {
+        setDiscount(5000);
+      },
+    });
+  };
   return (
     <div
       className="modal d-block"
@@ -89,12 +103,27 @@ const CartModal = () => {
               })}
             </div>
             <div className="d-flex discount justify-content-between p-2">
-              <input type="text" placeholder="Code" /> <button>Submit</button>
+              <input
+                type="text"
+                placeholder="Code"
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
+                disabled={!!discount}
+              />{" "}
+              <button onClick={onDiscountClick}>Submit</button>
             </div>
             <div className="total-payment d-flex justify-content-between p-2 mt-4">
               <p>total</p>
-              <p className="payment-value">{totalPrice}$</p>
+              <p className={`payment-value ${!!discount && "discount-price"}`}>
+                {totalPrice}$
+              </p>
             </div>
+            {!!discount && (
+              <div className="total-payment d-flex justify-content-between p-2 mt-4">
+                <p>with discount</p>
+                <p className="payment-value">{totalPrice - discount}$</p>
+              </div>
+            )}
           </div>
           <div className="modal-footer border-0">
             <button
@@ -108,7 +137,7 @@ const CartModal = () => {
             <button
               type="button"
               className="modal-button"
-              onClick={() => purchaseApiCall}
+              onClick={paymentApiCall}
             >
               Buy!
             </button>

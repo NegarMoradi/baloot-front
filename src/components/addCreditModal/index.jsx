@@ -1,6 +1,6 @@
 import UseApi from "../../hooks/api";
 
-const AddCreditModal = ({ credit, setClose }) => {
+const AddCreditModal = ({ credit, setClose, onPaymentSuccess }) => {
   const { apiCall } = UseApi();
 
   const onConfirm = () => {
@@ -8,7 +8,10 @@ const AddCreditModal = ({ credit, setClose }) => {
       url: `http://localhost:5432/api/users/credit`,
       query: { credit: credit },
       method: "post",
-      sucessCallback: setClose,
+      sucessCallback: () => {
+        onPaymentSuccess();
+        setClose();
+      },
     });
   };
 

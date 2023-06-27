@@ -15,13 +15,16 @@ import AddCreditModal from "../../components/addCreditModal";
 import { showCartModal } from "../../store/cartModal";
 import { useNavigate } from "react-router-dom";
 import AddToCart from "../../components/addToCart";
+import { cartModalSelectors } from "../../store/cartModal/selector";
 
 const User = () => {
   const user = useSelector(userSelectors.user);
+  const showCartModalStatus = useSelector(cartModalSelectors.cartModal);
   const dispatch = useDispatch();
   const { apiCall } = UseApi();
   const [buyList, setBuyList] = useState([]);
   const [addCreditModalState, setAddCreditModalState] = useState(false);
+  const [creditSuccess, setCreditSuccess] = useState(false);
   const [creditInput, setCreditInput] = useState("");
   const [purchasedList, setPurchasedList] = useState([]);
   const navigate = useNavigate();
@@ -79,6 +82,12 @@ const User = () => {
     getPurchasedListApiCall();
   }, [user]);
 
+  useEffect(() => {
+    if (!showCartModalStatus) {
+      getBuyListApiCall();
+      getPurchasedListApiCall();
+    }
+  }, [showCartModalStatus]);
   return (
     <>
       <div>
@@ -103,14 +112,19 @@ const User = () => {
                   <p className="mb-0 mx-4">{user.address}</p>
                 </div>
               </div>
-              <button onClick={() => logoutApiCall()} className="logout user-card-button">
+              <button
+                onClick={() => logoutApiCall()}
+                className="logout user-card-button"
+              >
                 logout
               </button>
             </div>
             <div className="user-credit d-flex flex-column my-1 align-items-center">
               <div className="d-flex">
                 <img className="mx-2" src={DollarSignIcon} alt="dollar sign" />
-                <p className="mb-0 mx-1">{user.credit}</p>
+                <p className="mb-0 mx-1">
+                  {!creditSuccess ? user.credit : user.credit + +creditInput}
+                </p>
               </div>
               <input
                 className="my-3 px-4 w-100"
@@ -191,7 +205,10 @@ const User = () => {
                 })}
               </tbody>
             </table>
-            <button onClick={showCartDialog} className="py-3 w-50 user-card-button">
+            <button
+              onClick={showCartDialog}
+              className="py-3 w-50 user-card-button"
+            >
               Pay now!
             </button>
           </div>
@@ -214,66 +231,110 @@ const User = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="user-item-details">
-                  <td data-label="Image">
-                    <img
-                      src="/ballot-front/assets/png/spaghetti.png"
-                      className="mb-0"
-                      alt="item"
-                    />
-                  </td>
-                  <td data-label="Name">
-                    <p className="mb-0">Mom’s Spaghetti</p>
-                  </td>
-                  <td data-label="Categories">
-                    <p className="mb-0">Food</p>
-                  </td>
-                  <td data-label="Price">
-                    <p className="mb-0">$60000</p>
-                  </td>
-                  <td data-label="Provider ID">
-                    <p className="mb-0">313</p>
-                  </td>
-                  <td data-label="Rating">
-                    <p className="mb-0 rating">10</p>
-                  </td>
-                  <td data-label="In Stock">
-                    <p className="mb-0 in-stock">0</p>
-                  </td>
-                  <td data-label="Quantities">
-                    <p className="mb-0">0</p>
-                  </td>
+                {buyList?.map((item) => {
+                  return (
+                    <tr className="user-item-details">
+                      <td data-label="Image">
+                        <img
+                          src={item.commodity.image}
+                          className="mb-0"
+                          alt="item"
+                        />
+                      </td>
+                      <td data-label="Name">
+                        <p className="mb-0">{item.commodity.name}</p>
+                      </td>
+                      <td data-label="Categories">
+                        <p className="mb-0">
+                          {item.commodity.categories.join(", ")}
+                        </p>
+                      </td>
+                      <td data-label="Price">
+                        <p className="mb-0">${item.commodity.price}</p>
+                      </td>
+                      <td data-label="Provider ID">
+                        <p className="mb-0">{item.commodity.providerId}</p>
+                      </td>
+                      <td data-label="Rating">
+                        <p className="mb-0 rating">{item.commodity.rating}</p>
+                      </td>
+                      <td data-label="In Stock">
+                        <p className="mb-0 in-stock">
+                          {item.commodity.inStock}
+                        </p>
+                      </td>
+                      <td data-label="In Cart" className="in-cart-td">
+                        <AddToCart product={item.commodity} type="product" />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <button
+              onClick={showCartDialog}
+              className="py-3 w-50 user-card-button"
+            >
+              Pay now!
+            </button>
+          </div>
+          <div className="history text-center">
+            <div className="d-flex cart-title align-items-center">
+              <HistoryIcon />
+              <p className="m-1">History</p>
+            </div>
+            <table>
+              <thead className="categories align-items-center">
+                <tr>
+                  <th scope="col">Image</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Categories</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Provider ID</th>
+                  <th scope="col">Rating</th>
+                  <th scope="col">In Stock</th>
+                  <th scope="col">In Cart</th>
                 </tr>
-                <tr className="user-item-details">
-                  <td data-label="Image">
-                    <img
-                      src="/ballot-front/assets/png/microphone.png"
-                      className="mb-0"
-                      alt="item"
-                    />
-                  </td>
-                  <td data-label="Name">
-                    <p className="mb-0">Dre’s Microphone</p>
-                  </td>
-                  <td data-label="Categories">
-                    <p className="mb-0">Technology</p>
-                  </td>
-                  <td data-label="Price">
-                    <p className="mb-0">$4200000</p>
-                  </td>
-                  <td data-label="Provider ID">
-                    <p className="mb-0">4321</p>
-                  </td>
-                  <td data-label="Rating">
-                    <p className="mb-0 rating">8.5</p>
-                  </td>
-                  <td data-label="In Stock">
-                    <p className="mb-0 in-stock">22</p>
-                  </td>
-                  <td data-label="Quantities">
-                    <p className="mb-0">1</p>
-                  </td>
-                </tr>
+              </thead>
+              <tbody>
+                {purchasedList?.map((item) => {
+                  return (
+                    <tr className="user-item-details">
+                      <td data-label="Image">
+                        <img
+                          src={item.commodity.image}
+                          className="mb-0"
+                          alt="item"
+                        />
+                      </td>
+                      <td data-label="Name">
+                        <p className="mb-0">{item.commodity.name}</p>
+                      </td>
+                      <td data-label="Categories">
+                        <p className="mb-0">
+                          {item.commodity.categories.join(", ")}
+                        </p>
+                      </td>
+                      <td data-label="Price">
+                        <p className="mb-0">${item.commodity.price}</p>
+                      </td>
+                      <td data-label="Provider ID">
+                        <p className="mb-0">{item.commodity.providerId}</p>
+                      </td>
+                      <td data-label="Rating">
+                        <p className="mb-0 rating">{item.commodity.rating}</p>
+                      </td>
+                      <td data-label="In Stock">
+                        <p className="mb-0 in-stock">
+                          {item.commodity.inStock}
+                        </p>
+                      </td>
+                      <td data-label="Quantities">
+                        <p className="mb-0">{item.count}</p>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -282,6 +343,9 @@ const User = () => {
       {addCreditModalState && (
         <AddCreditModal
           credit={creditInput}
+          onPaymentSuccess={() => {
+            setCreditSuccess(true);
+          }}
           setClose={() => setAddCreditModalState(false)}
         />
       )}

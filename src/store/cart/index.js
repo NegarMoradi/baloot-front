@@ -35,8 +35,10 @@ export const cartSlice = createSlice({
              
             return state;
         },
-        clear: () => {
-            return InitialState;
+        clear: (state) => {
+            console.log("clear");
+            state = InitialState;
+            return state;
         },
     },
 });
