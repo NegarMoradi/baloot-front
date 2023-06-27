@@ -9,15 +9,26 @@ const CartModal = () => {
   const dispatch = useDispatch();
   const [buyList, setBuyList] = useState([]);
   const { apiCall } = UseApi();
+  const [totalPrice, setTotalPrice] = useState(0);
   const user = useSelector(userSelectors.user);
 
   const closeModal = () => {
     dispatch(hideCartModal());
   };
-
+  const calculateTotalPrice = () => {
+   let total = 0;
+    buyList.forEach(item => {
+      total += item.commodity.price;
+    })
+    setTotalPrice(total);
+  }
   const onSuccessBuyList = (res) => {
     setBuyList(res.data.data);
   };
+
+  useEffect(() => {
+    calculateTotalPrice()
+  }, [buyList])
 
   const onSuccessPurchase = () => {
     closeModal();
@@ -64,29 +75,25 @@ const CartModal = () => {
           </div>
           <div className="modal-body">
             <div className="mb-4">
-              {/* {buyList?.map(() => {
-              return ( */}
-              <div className="d-flex justify-content-between modal-buy-list p-2 align-items-center">
-                <p className="modal-buy-list-title m-2 align-items-center">
-                  . Galaxy S21 x1
-                </p>
-                <p className="modal-buy-list-value m-2">84000000$</p>
-              </div>
-              <div className="d-flex justify-content-between modal-buy-list p-2 align-items-center">
-                <p className="modal-buy-list-title m-2 align-items-center">
-                  . Galaxy S21 x1
-                </p>
-                <p className="modal-buy-list-value m-2">84000000$</p>
-              </div>
-              {/* );
-            })} */}
+              {buyList?.map((item) => {
+                return (
+                  <div className="d-flex justify-content-between modal-buy-list p-2 align-items-center">
+                    <p className="modal-buy-list-title m-2 align-items-center">
+                      . {item.commodity.name} x{item.count}
+                    </p>
+                    <p className="modal-buy-list-value m-2">
+                      {item.commodity.price}$
+                    </p>
+                  </div>
+                );
+              })}
             </div>
             <div className="d-flex discount justify-content-between p-2">
               <input type="text" placeholder="Code" /> <button>Submit</button>
             </div>
             <div className="total-payment d-flex justify-content-between p-2 mt-4">
               <p>total</p>
-              <p className="payment-value">105000000$</p>
+              <p className="payment-value">{totalPrice}$</p>
             </div>
           </div>
           <div className="modal-footer border-0">
