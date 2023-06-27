@@ -14,6 +14,7 @@ import { userClear } from "../../store/user";
 import AddCreditModal from "../../components/addCreditModal";
 import { showCartModal } from "../../store/cartModal";
 import { useNavigate } from "react-router-dom";
+import AddToCart from "../../components/addToCart";
 
 const User = () => {
   const user = useSelector(userSelectors.user);
@@ -102,7 +103,7 @@ const User = () => {
                   <p className="mb-0 mx-4">{user.address}</p>
                 </div>
               </div>
-              <button onClick={() => logoutApiCall()} className="logout">
+              <button onClick={() => logoutApiCall()} className="logout user-card-button">
                 logout
               </button>
             </div>
@@ -122,7 +123,7 @@ const User = () => {
               <button
                 data-toggle="modal"
                 data-target="#addCreditModal"
-                className="my-1 w-100"
+                className="my-1 w-100 user-card-button"
                 onClick={() => {
                   setAddCreditModalState(true);
                 }}
@@ -150,47 +151,47 @@ const User = () => {
                 </tr>
               </thead>
               <tbody>
-                {buyList?.map(() => {
+                {buyList?.map((item) => {
                   return (
                     <tr className="user-item-details">
                       <td data-label="Image">
                         <img
-                          src="/ballot-front/assets/png/mobile.png"
+                          src={item.commodity.image}
                           className="mb-0"
                           alt="item"
                         />
                       </td>
                       <td data-label="Name">
-                        <p className="mb-0">Galaxy S21</p>
+                        <p className="mb-0">{item.commodity.name}</p>
                       </td>
                       <td data-label="Categories">
-                        <p className="mb-0">Technology, Phone</p>
+                        <p className="mb-0">
+                          {item.commodity.categories.join(", ")}
+                        </p>
                       </td>
                       <td data-label="Price">
-                        <p className="mb-0">$21000000</p>
+                        <p className="mb-0">${item.commodity.price}</p>
                       </td>
                       <td data-label="Provider ID">
-                        <p className="mb-0">1234</p>
+                        <p className="mb-0">{item.commodity.providerId}</p>
                       </td>
                       <td data-label="Rating">
-                        <p className="mb-0 rating">8.3</p>
+                        <p className="mb-0 rating">{item.commodity.rating}</p>
                       </td>
                       <td data-label="In Stock">
-                        <p className="mb-0 in-stock">17</p>
+                        <p className="mb-0 in-stock">
+                          {item.commodity.inStock}
+                        </p>
                       </td>
                       <td data-label="In Cart" className="in-cart-td">
-                        <div className="in-cart">
-                          <span>-</span>
-                          <p className="mb-0">1</p>
-                          <span>+</span>
-                        </div>
+                        <AddToCart product={item.commodity} type="product" />
                       </td>
                     </tr>
                   );
                 })}
               </tbody>
             </table>
-            <button onClick={showCartDialog} className="py-3 w-50">
+            <button onClick={showCartDialog} className="py-3 w-50 user-card-button">
               Pay now!
             </button>
           </div>
