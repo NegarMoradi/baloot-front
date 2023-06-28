@@ -28,7 +28,9 @@ const Home = () => {
     getCommoditiesApiCall();
   }, []);
 
-
+  useEffect(() => {
+    console.log(commodities);
+  }, [commodities]);
   return (
     <>
       <HomeHeader onSearch={setCommodities} />
@@ -40,11 +42,13 @@ const Home = () => {
               return <Product key={index} product={product} />;
             })}
           </div>
-          { commodities.length && <Pagination
-            itemsPerPage={10}
-            items={commodities}
-            setCurrentItems={setShowedItems}
-          />}
+          {commodities.length && (
+            <Pagination
+              itemsPerPage={12}
+              items={commodities}
+              setCurrentItems={setShowedItems}
+            />
+          )}
         </div>
       </div>
     </>

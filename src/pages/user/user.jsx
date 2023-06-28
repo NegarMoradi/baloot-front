@@ -231,9 +231,15 @@ const User = () => {
                 </tr>
               </thead>
               <tbody>
-                {buyList?.map((item) => {
+                {buyList?.map((item, index) => {
                   return (
-                    <tr className="user-item-details">
+                    <tr
+                      key={index}
+                      onClick={() =>
+                        navigate(`/commodities/${item.commodity.id}`)
+                      }
+                      className="user-item-details"
+                    >
                       <td data-label="Image">
                         <img
                           src={item.commodity.image}
@@ -297,9 +303,15 @@ const User = () => {
                 </tr>
               </thead>
               <tbody>
-                {purchasedList?.map((item) => {
+                {purchasedList?.map((item, index) => {
                   return (
-                    <tr className="user-item-details">
+                    <tr
+                      key={index}
+                      onClick={() =>
+                        navigate(`/commodities/${item.commodity.id}`)
+                      }
+                      className="user-item-details"
+                    >
                       <td data-label="Image">
                         <img
                           src={item.commodity.image}
