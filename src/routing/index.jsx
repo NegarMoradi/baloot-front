@@ -8,6 +8,7 @@ import Login from '../pages/login';
 import Commodity from '../pages/commodity';
 import Provider from '../pages/provider';
 import User from '../pages/user/user';
+import Callback from '../pages/callback';
 
 const Routing = () => {
     return (
@@ -17,6 +18,7 @@ const Routing = () => {
                 <Route path='commodities/:id' element={<Commodity/>}/>
                 <Route path='/providers/:id' element={<Provider/>}/>
                 <Route path='/user' element={<User/>}/>
+                <Route path='/api/callback' element={<Callback />} />
             </Routes>
     )
 }

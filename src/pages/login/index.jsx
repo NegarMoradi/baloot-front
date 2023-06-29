@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./login.css";
 import UseApi from "../../hooks/api";
@@ -6,12 +6,21 @@ import { useNavigate } from "react-router-dom";
 import { setUserInfo } from "../../store/user";
 import { userSelectors } from "../../store/user/selector";
 import { addMultiToCart } from "../../store/cart";
+import { setToken } from "../../store/user/token";
+
+const initialRegisterState = {
+  username: "",
+  password: "",
+  address: "",
+  email: "",
+  birthday: "",
+};
 
 const Login = () => {
   const { apiCall } = UseApi();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [registerField, setRegisterFields] = useState(initialRegisterState);
   const user = useSelector(userSelectors.user);
 
   useEffect(() => {
@@ -37,6 +46,11 @@ const Login = () => {
 
   const onLoginSuccess = (res) => {
     getUserData();
+    dispatch(
+      setToken({
+        jwtToken: "negar",
+      })
+    );
   };
 
   const loginApiCall = () => {
@@ -53,10 +67,32 @@ const Login = () => {
     });
   };
 
+  const onSetFields = (e, type) => {
+    setRegisterFields((val) => {
+      const newVal = { ...val };
+      newVal[type] = e.target.value;
+      return newVal;
+    });
+  };
+
+  const onSubmitRegister = () => {
+    apiCall({
+      url: "http://localhost:5432/api/users/signup",
+      query: registerField,
+      method: "post",
+      sucessCallback: getUserData,
+    });
+  };
+
   return (
     <>
       <div className="main">
         <div className="login-wrap">
+          <a
+            href={`https://github.com/login/oauth/authorize?client_id=91a476b3535dff814b00&scope=user`}
+          >
+            Login with github
+          </a>
           <div className="login-html">
             <input
               id="tab-1"
@@ -116,7 +152,15 @@ const Login = () => {
                   <label htmlFor="user-signUp" className="label">
                     Username
                   </label>
-                  <input id="user-signUp" type="text" className="input" />
+                  <input
+                    id="user-signUp"
+                    type="text"
+                    className="input"
+                    value={registerField.username}
+                    onChange={(e) => {
+                      onSetFields(e, "username");
+                    }}
+                  />
                 </div>
                 <div className="group">
                   <label htmlFor="pass-signUp" className="label">
@@ -127,27 +171,61 @@ const Login = () => {
                     type="password"
                     className="input"
                     data-type="password"
-                  />
-                </div>
-                <div className="group">
-                  <label htmlFor="pass-signUp-repeat" className="label">
-                    Repeat Password
-                  </label>
-                  <input
-                    id="pass-signUp-repeat"
-                    type="password"
-                    className="input"
-                    data-type="password"
+                    value={registerField.password}
+                    onChange={(e) => {
+                      onSetFields(e, "password");
+                    }}
                   />
                 </div>
                 <div className="group">
                   <label htmlFor="email" className="label">
                     Email Address
                   </label>
-                  <input id="email" type="text" className="input" />
+                  <input
+                    id="email"
+                    type="text"
+                    className="input"
+                    value={registerField.email}
+                    onChange={(e) => {
+                      onSetFields(e, "email");
+                    }}
+                  />
                 </div>
                 <div className="group">
-                  <input type="submit" className="button" value="Sign Up" />
+                  <label htmlFor="birthday" className="label">
+                    Birthday
+                  </label>
+                  <input
+                    id="birthday"
+                    type="text"
+                    className="input"
+                    value={registerField.birthday}
+                    onChange={(e) => {
+                      onSetFields(e, "birthday");
+                    }}
+                  />
+                </div>
+                <div className="group">
+                  <label htmlFor="address" className="label">
+                    Address
+                  </label>
+                  <input
+                    id="address"
+                    type="text"
+                    className="input"
+                    value={registerField.address}
+                    onChange={(e) => {
+                      onSetFields(e, "address");
+                    }}
+                  />
+                </div>
+                <div className="group">
+                  <input
+                    type="submit"
+                    className="button"
+                    value="Sign Up"
+                    onClick={onSubmitRegister}
+                  />
                 </div>
                 <div className="hr"></div>
                 <div className="foot-lnk">

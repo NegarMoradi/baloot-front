@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const InitialState = {
-    access_token: '',
-    refresh_token: ''
+    token: '',
 };
 
 export const tokenSlice = createSlice({
@@ -11,8 +10,7 @@ export const tokenSlice = createSlice({
 
     reducers: {
         setToken: (state, action) => {
-            state.access_token = action?.payload?.access_token;
-            state.refresh_token = action?.payload?.refresh_token;
+            state.token = action?.payload?.jwtToken;
         },
         clear: (state) => {
             state = InitialState;

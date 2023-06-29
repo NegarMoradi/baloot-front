@@ -1,14 +1,16 @@
 import axios from 'axios';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { userClear } from '../store/user';
 import { Toaster, toast } from "react-hot-toast";
+import { userSelectors } from '../store/user/selector';
 
 const UseApi = () => {
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const token = useSelector(userSelectors.token);
     // const navigate = useNavigate()
 
     const apiCall = ({ url, query, method, sucessCallback, failedCallback }) => {
@@ -22,6 +24,11 @@ const UseApi = () => {
             axiosOptions.data = params
         } else {
             axiosOptions.params = params
+        }
+        if(token && token.token) {
+            axiosOptions.headers = {
+                Authorization: `token ${token.token}`
+            }
         }
         axios(axiosOptions)
             .then(function (response) {
