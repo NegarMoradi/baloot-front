@@ -40,7 +40,7 @@ const HomeSetting = ({ onSort }) => {
     buttonClick === "price" ? "price-button" : "price-button-click";
 
   return (
-    <div className="setting d-flex flex-row-reverse justify-content-between">
+    <div className="setting d-flex  justify-content-between">
       <div className="sort d-flex align-items-center">
         <p className="mb-0">sort by:</p>
         <button

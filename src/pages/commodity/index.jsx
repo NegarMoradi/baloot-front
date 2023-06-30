@@ -50,7 +50,7 @@ const Commodity = () => {
   const getProviderApiCall = () => {
     const query = {};
     apiCall({
-      url: `http://localhost:5432/api/commodities/provider/${commodity?.providerId}`,
+      url: `http://localhost:5432/api/commodities/provider/${commodity?.id}`,
       query,
       method: "get",
       sucessCallback: onSuccessProvider,

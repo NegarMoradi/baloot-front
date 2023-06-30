@@ -5,7 +5,7 @@ import HeaderCart from "../headerCart";
 import { useSelector } from "react-redux";
 import { userSelectors } from "../../store/user/selector";
 
-const Header = ({ username, cart }) => {
+const Header = () => {
   const pathname = window.location.pathname;
   const user = useSelector(userSelectors.user);
   return pathname === "/" ? null : pathname === "/login" ? (
@@ -17,7 +17,7 @@ const Header = ({ username, cart }) => {
   ) : (
     <header className="d-xxl-flex">
       <div>{user.username && <HeaderCart />}</div>
-      <a href="./" className="logo">
+      <a href="./.." className="logo">
         <img src={baloot} alt="Baloot logo" />
       </a>
     </header>
