@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { userClear } from '../store/user';
+import { Toaster, toast } from "react-hot-toast";
 
 const UseApi = () => {
     const [loading, setLoading] = useState(false);
@@ -30,11 +31,10 @@ const UseApi = () => {
             .catch(function (error) {
                 // handle error
                 if(error?.response?.status === 401) {
-                    // Toast(error.response.data)
                     navigate("/login")
                     dispatch(userClear())
-                    // window.location.replace('http://localhost:5432/login')
                 }
+                toast(error?.response?.data?.data)
                 failedCallback?.(error);
             })
             .finally(function () {

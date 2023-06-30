@@ -212,6 +212,10 @@
     width: 430px !important;
 }
 
+.suggested-item img {
+    height: 280px;
+}
+
 .item:hover {
     background-color:#F7F0E9;
 }

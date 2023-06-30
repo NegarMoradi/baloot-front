@@ -58,3 +58,33 @@
     line-height: 39px;
     margin-right: 31px;
 }
+
+.available-commodities{
+    width: 75px !important;
+    height: 35px !important;
+}
+
+.form-check-input:checked {
+    background-color: green !important;
+    border: none; 
+}
+
+.form-check-input:focus {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.form-switch .form-check-input {
+    background-color: #909090;
+    background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27%23fff%27/%3e%3c/svg%3e") !important; 
+
+}
+
+.form-switch .form-check-input:focus {
+    background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27%23fff%27/%3e%3c/svg%3e") !important; 
+}
+
+.form-switch .form-check-input:checked {
+    background-position: right center;
+    background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27%23fff%27/%3e%3c/svg%3e") !important; 
+}

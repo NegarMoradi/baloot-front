@@ -1,8 +1,14 @@
 import star from "../../../../assets/icons/star.svg";
-import stars from "../../../../assets/png/stars.png";
 import AddToCart from "../../../../components/addToCart";
 import { useNavigate } from "react-router-dom";
-const CommodityDetail = ({ commodity, provider }) => {
+import StarRating from "../../../../components/rating";
+const CommodityDetail = ({
+  commodity,
+  provider,
+  rating,
+  setRating,
+  onSubmitRating,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -19,8 +25,9 @@ const CommodityDetail = ({ commodity, provider }) => {
               <img src={star} alt="star icon" />
               <div className="d-flex align-items-end">
                 <p className="item-point m-0">{commodity.rating}</p>
-                {/* <p className="item-comments m-0">(12{commodity.comments['amir'].length})</p> */}
-                <p className="item-comments m-0">(12)</p>
+                <p className="item-comments m-0">
+                  ({Object.values(commodity?.comments).length})
+                </p>
               </div>
             </div>
           </div>
@@ -42,20 +49,22 @@ const CommodityDetail = ({ commodity, provider }) => {
         </div>
         <div className="add-to-cart d-flex justify-content-between align-items-center">
           <p className="m-0">{commodity?.price}$</p>
-          <AddToCart
-            product={commodity}
-          />
+          <AddToCart product={commodity} />
         </div>
         <div className="rate row align-items-center">
           <div className="col-xxl-8">
             <p>rate now</p>
             <div className="d-flex">
-              <img src={stars} alt="points" />
-              <img src={stars} alt="points" />
+              <StarRating rating={rating} setRating={setRating} />
             </div>
           </div>
           <div className="col-xxl-4">
-            <button className="submit-button p-3 border-0">submit</button>
+            <button
+              onClick={onSubmitRating}
+              className="submit-button p-3 border-0"
+            >
+              submit
+            </button>
           </div>
         </div>
       </div>

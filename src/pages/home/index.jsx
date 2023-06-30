@@ -5,7 +5,6 @@ import Product from "../../components/Product";
 import React, { useEffect, useState } from "react";
 import UseApi from "../../hooks/api";
 import Pagination from "../../components/pagination";
-
 const Home = () => {
   const [commodities, setCommodities] = useState([]);
   const [showedItems, setShowedItems] = useState([]);
@@ -28,9 +27,6 @@ const Home = () => {
     getCommoditiesApiCall();
   }, []);
 
-  useEffect(() => {
-    console.log(commodities);
-  }, [commodities]);
   return (
     <>
       <HomeHeader onSearch={setCommodities} />

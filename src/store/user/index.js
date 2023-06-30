@@ -11,7 +11,6 @@ const InitialState = {
     email: '',
     password: "",
     purchasedList: {},
-    buyList: {},
     username: ""
 };
 

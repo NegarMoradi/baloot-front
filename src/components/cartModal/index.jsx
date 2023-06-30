@@ -89,9 +89,12 @@ const CartModal = () => {
           </div>
           <div className="modal-body">
             <div className="mb-4">
-              {buyList?.map((item) => {
+              {buyList?.map((item, index) => {
                 return (
-                  <div className="d-flex justify-content-between modal-buy-list p-2 align-items-center">
+                  <div
+                    key={index}
+                    className="d-flex justify-content-between modal-buy-list p-2 align-items-center"
+                  >
                     <p className="modal-buy-list-title m-2 align-items-center">
                       . {item.commodity.name} x{item.count}
                     </p>
