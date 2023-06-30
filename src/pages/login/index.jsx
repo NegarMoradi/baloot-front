@@ -48,7 +48,7 @@ const Login = () => {
     getUserData();
     dispatch(
       setToken({
-        jwtToken: "negar",
+        jwtToken: res.data.data,
       })
     );
   };
