@@ -71,7 +71,7 @@ const HomeSetting = ({ onSort }) => {
             role="switch"
             id="flexSwitchCheckDefault"
             onChange={(e) => {
-              setAvailableCommodity(e.target.checked);
+              setAvailableCommodity(!e.target.checked);
               onSelectAvailableCommodity();
             }}
           />
