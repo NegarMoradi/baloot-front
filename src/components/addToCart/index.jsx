@@ -15,8 +15,6 @@ const AddToCart = ({ product, type }) => {
   const { apiCall } = UseApi();
   const dispatch = useDispatch();
 
-
-
   const postAddCart = () => {
     apiCall({
       url: `http://localhost:5432/api/users/buyList`,
@@ -31,10 +29,11 @@ const AddToCart = ({ product, type }) => {
       url: `http://localhost:5432/api/users/buyList`,
       query: { commodityId: product.id },
       method: "delete",
-      sucessCallback: ({data}) => {console.log(data.data)},
+      sucessCallback: ({ data }) => {
+        console.log(data.data);
+      },
     });
   };
-
 
   const onAddToCart = () => {
     postAddCart();
@@ -63,7 +62,7 @@ const AddToCart = ({ product, type }) => {
           <button className="bg-white border-0" onClick={onDecreaseCart}>
             -
           </button>
-          <p className="mb-0 mx-3">{cart[product.id]?.count}</p>
+          <p className="mb-0 mx-1">{cart[product.id]?.count}</p>
           <button className="bg-white border-0" onClick={onIncreaseCart}>
             +
           </button>

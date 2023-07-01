@@ -11,7 +11,7 @@
 }
 
 .item img {
-    height: 15rem;
+    height: 13rem;
     max-width: 100%;
 }
 
@@ -77,4 +77,48 @@
     .item-details p {
         margin-top: 15px;
     }
+
+
+    .item img {
+        height: 17rem;
+        max-width: 100%;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+
+    .item-title {
+        color: #593C1C;
+        font-weight: 600;
+        font-size: 23px;
+        line-height: 34px;
+        padding-left: 19px;
+        text-align: left;
+    }
+
+    .item img {
+        height: 21rem;
+        max-width: 100%;
+    }
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1400px) {
+
+    .item-title {
+        color: #593C1C;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 34px;
+        padding-left: 19px;
+        text-align: left;
+    }
+
+    .item img {
+        height: 15rem;
+        max-width: 100%;
+    }
+
 }
