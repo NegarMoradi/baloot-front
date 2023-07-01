@@ -12,14 +12,14 @@ export const tokenSlice = createSlice({
         setToken: (state, action) => {
             state.token = action?.payload?.jwtToken;
         },
-        clear: (state) => {
+        tokenClear: (state) => {
             state = InitialState;
             return state;
         },
     },
 });
 
-export const { setToken, clear } =
+export const { setToken, tokenClear } =
     tokenSlice.actions;
 
 export default tokenSlice.reducer;

@@ -13,7 +13,7 @@ const initialRegisterState = {
   password: "",
   address: "",
   email: "",
-  birthday: "",
+  birthdate: "",
 };
 
 const Login = () => {
@@ -51,6 +51,7 @@ const Login = () => {
       })
     );
     getUserData();
+    window.location("/");
   };
 
   const loginApiCall = () => {
@@ -75,24 +76,29 @@ const Login = () => {
     });
   };
 
+  const onSubmitRegisterSuccess = (res) => {
+    dispatch(
+      setToken({
+        jwtToken: res.data.data,
+      })
+    );
+    getUserData();
+    navigate("/");
+  };
+
   const onSubmitRegister = () => {
     apiCall({
       url: "http://localhost:5432/api/users/signup",
       query: registerField,
       method: "post",
-      sucessCallback: getUserData,
+      sucessCallback: onSubmitRegisterSuccess,
     });
   };
 
   return (
     <>
-      <div className="main">
+      <div className="main-login">
         <div className="login-wrap">
-          <a
-            href={`https://github.com/login/oauth/authorize?client_id=91a476b3535dff814b00&scope=user`}
-          >
-            Login with github
-          </a>
           <div className="login-html">
             <input
               id="tab-1"
@@ -127,18 +133,7 @@ const Login = () => {
                     data-type="password"
                   />
                 </div>
-                <div className="group">
-                  <input
-                    id="check"
-                    type="checkbox"
-                    className="check"
-                    defaultChecked
-                  />
-                  <label htmlFor="check">
-                    <span className="icon"></span> Keep me Signed in
-                  </label>
-                </div>
-                <div className="group">
+                <div className="group mt-5">
                   <input
                     type="submit"
                     className="button"
@@ -146,6 +141,12 @@ const Login = () => {
                     onClick={loginApiCall}
                   />
                 </div>
+                <a
+                  className="github"
+                  href={`https://github.com/login/oauth/authorize?client_id=46064a3c8fcc86ae9905&scope=user`}
+                >
+                  Login with github
+                </a>
               </div>
               <div className="sign-up-htm">
                 <div className="group">
@@ -192,16 +193,16 @@ const Login = () => {
                   />
                 </div>
                 <div className="group">
-                  <label htmlFor="birthday" className="label">
+                  <label htmlFor="birthdate" className="label">
                     Birthday
                   </label>
                   <input
-                    id="birthday"
+                    id="birthdate"
                     type="text"
                     className="input"
                     value={registerField.birthday}
                     onChange={(e) => {
-                      onSetFields(e, "birthday");
+                      onSetFields(e, "birthdate");
                     }}
                   />
                 </div>
@@ -227,6 +228,12 @@ const Login = () => {
                     onClick={onSubmitRegister}
                   />
                 </div>
+                <a
+                  className="github"
+                  href={`https://github.com/login/oauth/authorize?client_id=91a476b3535dff814b00&scope=user`}
+                >
+                  SignUp with github
+                </a>
                 <div className="hr"></div>
                 <div className="foot-lnk">
                   <label htmlFor="tab-1">Already Member? </label>

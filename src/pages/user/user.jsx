@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import NameIcon from "../../assets/icons/name";
-import EmailIcon from "../../assets/icons/email";
-import BirthDateIcon from "../../assets/icons/birthDate";
+import NameIcon from "../../assets/icons/name.svg";
+import EmailIcon from "../../assets/icons/email.svg";
+import BirthDateIcon from "../../assets/icons/birthDate.svg";
 import AddressIcon from "../../assets/icons/address.svg";
 import DollarSignIcon from "../../assets/icons/dollarSign.svg";
 import BasketIcon from "../../assets/icons/basket.svg";
@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import AddToCart from "../../components/addToCart";
 import { cartModalSelectors } from "../../store/cartModal/selector";
 import AuthenticationLayout from "../../components/authenticationLayout";
+import { tokenClear } from "../../store/user/token";
 
 const User = () => {
   const user = useSelector(userSelectors.user);
@@ -31,6 +32,7 @@ const User = () => {
   const navigate = useNavigate();
   const onSuccessLogout = () => {
     dispatch(userClear());
+    dispatch(tokenClear());
     navigate("/");
   };
 
@@ -78,8 +80,10 @@ const User = () => {
   };
 
   useEffect(() => {
-    getBuyListApiCall();
-    getPurchasedListApiCall();
+    if (user.username) {
+      getBuyListApiCall();
+      getPurchasedListApiCall();
+    }
   }, [user]);
 
   useEffect(() => {
@@ -97,15 +101,15 @@ const User = () => {
               <div className="d-flex flex-column justify-content-between">
                 <div className="user-details">
                   <div className="d-flex align-items-center mb-3">
-                    <NameIcon />
+                    <img src={NameIcon} alt="name" />
                     <p className="mb-0 mx-4">{user.username}</p>
                   </div>
                   <div className="d-flex align-items-center">
-                    <EmailIcon />
+                  <img src={EmailIcon} alt="email" />
                     <p className="mb-0 mx-4">{user.email}</p>
                   </div>
                   <div className="d-flex align-items-center my-3">
-                    <BirthDateIcon />
+                  <img src={BirthDateIcon} alt="birthday" />
                     <p className="mb-0 mx-4">{user.birthDate}</p>
                   </div>
                   <div className="user-address d-flex align-items-center">
@@ -117,10 +121,7 @@ const User = () => {
                     <p className="mb-0 mx-4">{user.address}</p>
                   </div>
                 </div>
-                <button
-                  onClick={() => logoutApiCall()}
-                  className="logout user-card-button"
-                >
+                <button onClick={() => logoutApiCall()} className="logout my-1">
                   logout
                 </button>
               </div>

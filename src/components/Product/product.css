@@ -78,3 +78,34 @@
         margin-top: 15px;
     }
 }
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+
+    .item-title {
+        color: #593C1C;
+        font-weight: 600;
+        font-size: 23px;
+        line-height: 34px;
+        padding-left: 19px;
+        text-align: left;
+    }
+    
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1400px) {
+
+    .item-title {
+        color: #593C1C;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 34px;
+        padding-left: 19px;
+        text-align: left;
+    }
+    
+
+}
+

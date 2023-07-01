@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { userClear } from '../store/user';
@@ -11,7 +11,6 @@ const UseApi = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const token = useSelector(userSelectors.token);
-    // const navigate = useNavigate()
 
     const apiCall = ({ url, query, method, sucessCallback, failedCallback }) => {
         setLoading(true);

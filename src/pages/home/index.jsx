@@ -5,6 +5,7 @@ import Product from "../../components/Product";
 import React, { useEffect, useState } from "react";
 import UseApi from "../../hooks/api";
 import Pagination from "../../components/pagination";
+import AuthenticationLayout from "../../components/authenticationLayout";
 const Home = () => {
   const [commodities, setCommodities] = useState([]);
   const [showedItems, setShowedItems] = useState([]);
@@ -28,26 +29,28 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <HomeHeader onSearch={setCommodities} />
-      <div className="px-5 pt-5 home">
-        <HomeSetting onSort={setCommodities} />
-        <div className="items">
-          <div className="row">
-            {showedItems.map((product, index) => {
-              return <Product key={index} product={product} />;
-            })}
+    <AuthenticationLayout>
+      <>
+        <HomeHeader onSearch={setCommodities} />
+        <div className="px-5 pt-5 home">
+          <HomeSetting onSort={setCommodities} />
+          <div className="items">
+            <div className="row">
+              {showedItems.map((product, index) => {
+                return <Product key={index} product={product} />;
+              })}
+            </div>
+            {commodities.length && (
+              <Pagination
+                itemsPerPage={12}
+                items={commodities}
+                setCurrentItems={setShowedItems}
+              />
+            )}
           </div>
-          {commodities.length && (
-            <Pagination
-              itemsPerPage={12}
-              items={commodities}
-              setCurrentItems={setShowedItems}
-            />
-          )}
         </div>
-      </div>
-    </>
+      </>
+    </AuthenticationLayout>
   );
 };
 
