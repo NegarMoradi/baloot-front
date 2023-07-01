@@ -40,7 +40,9 @@ const UseApi = () => {
                     navigate("/login")
                     dispatch(userClear())
                 }
-                toast(error?.response?.data?.data)
+                if(error?.response?.data?.data){
+                    toast(error?.response?.data?.data)
+                }
                 failedCallback?.(error);
             })
             .finally(function () {

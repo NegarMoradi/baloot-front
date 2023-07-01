@@ -22,16 +22,25 @@ const Login = () => {
   const navigate = useNavigate();
   const [registerField, setRegisterFields] = useState(initialRegisterState);
   const user = useSelector(userSelectors.user);
+  const token = useSelector(userSelectors.token);
 
   useEffect(() => {
-    if (user.username) {
-      navigate("/");
-    }
+    // if (user.username || token) {
+    //   console.log('ddddddddf');
+    //   navigate("/");
+    // }
   }, [user]);
+
+  useEffect(() => {
+    if (token) {
+      getUserData();
+    }
+  }, [token]);
 
   const onGetUserDataSuccess = (res) => {
     dispatch(setUserInfo(res.data.data));
     dispatch(addMultiToCart(res.data.data.buyList));
+    navigate("/");
   };
 
   const getUserData = () => {
@@ -50,8 +59,6 @@ const Login = () => {
         jwtToken: res.data.data,
       })
     );
-    getUserData();
-    window.location("/");
   };
 
   const loginApiCall = () => {

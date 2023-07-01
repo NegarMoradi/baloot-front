@@ -11,7 +11,7 @@
 }
 
 .item img {
-    height: 15rem;
+    height: 13rem;
     max-width: 100%;
 }
 
@@ -77,6 +77,11 @@
     .item-details p {
         margin-top: 15px;
     }
+
+    .item img {
+        height: 17rem;
+        max-width: 100%;
+    }
 }
 
 
@@ -91,6 +96,10 @@
         text-align: left;
     }
     
+    .item img {
+        height: 21rem;
+        max-width: 100%;
+    }
 
 }
 
@@ -106,6 +115,10 @@
         text-align: left;
     }
     
+    .item img {
+        height: 15rem;
+        max-width: 100%;
+    }
 
 }
 

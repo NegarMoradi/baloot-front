@@ -27,6 +27,7 @@ const GetUserData = () => {
     useEffect(() => {
         getUserData();
     }, [])
+    
     return (
         <>
         </>

@@ -6,10 +6,14 @@ import React, { useEffect, useState } from "react";
 import UseApi from "../../hooks/api";
 import Pagination from "../../components/pagination";
 import AuthenticationLayout from "../../components/authenticationLayout";
+import { userSelectors } from "../../store/user/selector";
+import { useSelector } from "react-redux";
 const Home = () => {
   const [commodities, setCommodities] = useState([]);
   const [showedItems, setShowedItems] = useState([]);
+  const user = useSelector(userSelectors.user);
   const { apiCall } = UseApi();
+
   const onSuccess = (res) => {
     setCommodities(res.data.data);
   };
@@ -26,7 +30,7 @@ const Home = () => {
 
   useEffect(() => {
     getCommoditiesApiCall();
-  }, []);
+  }, [user]);
 
   return (
     <AuthenticationLayout>
@@ -40,7 +44,7 @@ const Home = () => {
                 return <Product key={index} product={product} />;
               })}
             </div>
-            {commodities.length && (
+            {commodities?.length && (
               <Pagination
                 itemsPerPage={12}
                 items={commodities}

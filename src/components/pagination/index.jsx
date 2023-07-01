@@ -6,9 +6,9 @@ const Pagination = ({ itemsPerPage, items, setCurrentItems }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
 
-  const pageCount = Math.ceil(items.length / itemsPerPage);
+  const pageCount = Math.ceil(items?.length / itemsPerPage);
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
+    const newOffset = (event.selected * itemsPerPage) % items?.length;
     setItemOffset(newOffset);
   };
 

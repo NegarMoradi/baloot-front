@@ -43,3 +43,43 @@
     font-size: 28px;
     line-height: 34px;
 }
+
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+
+
+    .header-button {
+        color: #593C1C;
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+    }
+
+    .header-button-user {
+        color: #593C1C;
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+    }
+    
+}
+
+
+@media (min-width: 992px) and (max-width: 1400px) {
+
+    .header-button {
+        color: #593C1C;
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+    }
+
+    .header-button-user {
+        color: #593C1C;
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+    }
+
+}
