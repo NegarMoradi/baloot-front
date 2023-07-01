@@ -1,12 +1,11 @@
-
 # stage1 as builder
-FROM node:17.8.0-alpine as builder
+FROM node:16.10.0-alpine as builder
 
 RUN npm install -g npm@8.11.0
 
-RUN mkdir /src
+RUN mkdir /react-ui
 
-WORKDIR /src
+WORKDIR /react-ui
 
 RUN npm install yarn
 # copy the package.json to install dependencies
@@ -32,7 +31,7 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy from the stahg 1
-COPY --from=builder /src/build /usr/share/nginx/html
+COPY --from=builder /react-ui/build /usr/share/nginx/html
 
 EXPOSE 3000 80
 
