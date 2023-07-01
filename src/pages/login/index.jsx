@@ -55,7 +55,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="main">
+      <div className="main-login">
         <div className="login-wrap">
           <div className="login-html">
             <input
@@ -90,17 +90,6 @@ const Login = () => {
                     className="input"
                     data-type="password"
                   />
-                </div>
-                <div className="group">
-                  <input
-                    id="check"
-                    type="checkbox"
-                    className="check"
-                    defaultChecked
-                  />
-                  <label htmlFor="check">
-                    <span className="icon"></span> Keep me Signed in
-                  </label>
                 </div>
                 <div className="group">
                   <input
