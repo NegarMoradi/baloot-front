@@ -118,9 +118,9 @@ const Commodity = () => {
                 {commodity?.comments &&
                   Object.values(commodity?.comments) &&
                   Object.values(commodity?.comments).map((comment, index) => (
-                    <>
-                      {comment.map((item) => (
-                        <>
+                    <div key={index}>
+                      {comment.map((item, cindex) => (
+                        <div key={cindex}>
                           {index === 0 && (
                             <p className="comment-title m-0">
                               Comments{" "}
@@ -129,16 +129,16 @@ const Commodity = () => {
                                 {Object.values(commodity?.comments).getLength()}
                                 )
                               </span>
+                              {console.log(commodity)}
                             </p>
                           )}
                           <Comment
                             comment={item}
-                            key={index}
                             getCommentFn={getCommodityApiCall}
                           />
-                        </>
+                        </div>
                       ))}
-                    </>
+                    </div>
                   ))}
                 <div className="row comment-row">
                   <div className="d-xxl-flex pt-4 align-items-end">

@@ -44,7 +44,8 @@ header {
     font-size: 28px;
     line-height: 34px;
     color: #FFFFFF;
-    padding: 17px 36px;
+    padding: 12px 36px;
+    width: fit-content;
 }
 
 .main-user {
@@ -101,6 +102,14 @@ header {
     background-color: #593C1C;
     box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
     border-radius: 15px;
+}
+
+.user-credit {
+    width: 50%;
+}
+
+.user-details{
+    width: 50%;
 }
 
 .user-cart {
@@ -222,7 +231,6 @@ table th {
     box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
     border-radius: 15px;
     margin-top: 16px;
-    margin-bottom: 145px;
 }
 
 .in-cart {

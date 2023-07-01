@@ -63,7 +63,7 @@ const AddToCart = ({ product, type }) => {
           <button className="bg-white border-0" onClick={onDecreaseCart}>
             -
           </button>
-          <p className="mb-0 mx-3">{cart[product.id]?.count}</p>
+          <p className="mb-0 mx-1">{cart[product.id]?.count}</p>
           <button className="bg-white border-0" onClick={onIncreaseCart}>
             +
           </button>

@@ -4,12 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { userSelectors } from "../../store/user/selector";
 import { cartSelectors } from "../../store/cart/selector";
 import "./headerCart.css";
+import { useNavigate } from "react-router-dom";
 
 const HeaderCart = () => {
   const user = useSelector(userSelectors.user);
   const cart = useSelector(cartSelectors.cart);
+  const navigate = useNavigate();
   const getCartLength = () => {
-    return Object.values(cart).reduce((currentCount, item) => item.count + currentCount, 0);
+    return Object.values(cart).reduce(
+      (currentCount, item) => item?.count + currentCount,
+      0
+    );
   };
   const dispatch = useDispatch();
   const showCartDialog = () => {
@@ -21,10 +26,7 @@ const HeaderCart = () => {
 
   return (
     <div className={`d-flex align-items-center ${buttonClass}`}>
-      <p
-        onClick={() => window.location.replace("http://localhost:3000/user")}
-        className="header-username m-0"
-      >
+      <p onClick={() => navigate("/user")} className="header-username m-0">
         {user.username}
       </p>
       <button
