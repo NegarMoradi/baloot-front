@@ -32,7 +32,6 @@ const User = () => {
   const onSuccessLogout = () => {
     dispatch(userClear());
     navigate("/");
-    // window.location.replace("http://localhost:3000/");
   };
 
   const showCartDialog = () => {

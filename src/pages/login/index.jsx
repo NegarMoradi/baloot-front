@@ -45,12 +45,12 @@ const Login = () => {
   };
 
   const onLoginSuccess = (res) => {
-    getUserData();
     dispatch(
       setToken({
         jwtToken: res.data.data,
       })
     );
+    getUserData();
   };
 
   const loginApiCall = () => {

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { userClear } from '../store/user';
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { userSelectors } from '../store/user/selector';
 
 const UseApi = () => {
@@ -27,7 +27,7 @@ const UseApi = () => {
         }
         if(token && token.token) {
             axiosOptions.headers = {
-                Authorization: `token ${token.token}`
+                Authorization: token.token
             }
         }
         axios(axiosOptions)
